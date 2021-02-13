@@ -1,8 +1,7 @@
 const { DefinePlugin } = require('webpack');
-const WorkboxPlugin = require('workbox-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 
@@ -12,7 +11,7 @@ module.exports = env => {
   console.log("ENVIRONMENT", env)
   return {
     mode: env.development ? 'development' : 'production',
-    entry: paths.pathIndex,
+    entry: paths.pathIndexTs,
     output: {
       path: paths.pathDist,
       filename: '[name].[contenthash:8].js',
@@ -55,9 +54,6 @@ module.exports = env => {
           "viewport": "width=device-width, initial-scale=1",
           "description": `${process.env.HTML_DESCRIPTION}`
         }
-      }),
-      new InterpolateHtmlPlugin(HtmlWebPackPlugin, {
-        PUBLIC_URL: JSON.stringify(process.env.PUBLIC_URL)
       }),
       new DefinePlugin({
         'process.env': {

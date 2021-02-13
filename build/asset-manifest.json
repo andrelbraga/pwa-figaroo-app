@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.e2824871.css",
-    "main.js": "/static/js/main.72115098.js",
+    "main.css": "/static/css/main.ab95af2a.css",
+    "main.js": "/static/js/main.4f39af7a.js",
     "main.png": "/static/media/manifest-icon-512.74141d57.png",
+    "service-worker.js": "/service-worker.js",
     "src/assets/media/manifest-icon-512.png": "/assets/manifest-icon-512.png",
     "static/media/manifest-icon-512.png": "/static/media/manifest-icon-512.74141d57.png",
-    "service-worker.js": "/service-worker.js",
     "src/assets/media/manifest-icon-192.png": "/assets/manifest-icon-192.png",
     "static/media/manifest-icon-192.png": "/static/media/manifest-icon-192.de87e86f.png",
     "favicon.ico": "/favicon.ico",
@@ -13,7 +13,7 @@
     "src/manifest.json": "/manifest.json"
   },
   "entrypoints": [
-    "static/css/main.e2824871.css",
-    "static/js/main.72115098.js"
+    "static/css/main.ab95af2a.css",
+    "static/js/main.4f39af7a.js"
   ]
 }

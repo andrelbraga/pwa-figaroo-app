@@ -1,7 +1,6 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
 const { merge } = require('webpack-merge')
-const config = require('./wb-config');
+const CopyPlugin = require('copy-webpack-plugin');
+const config = require('./webpack.config');
 const paths = require('./paths');
 
 module.exports = env => {
@@ -19,8 +18,7 @@ module.exports = env => {
           use: [
             'style-loader',
             'css-loader',
-            'resolve-url-loader',
-            'sass-loader?sourceMap',
+            'sass-loader'
           ]
         },
         {

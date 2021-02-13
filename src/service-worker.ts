@@ -15,6 +15,8 @@ skipWaiting()
 
 precacheAndRoute(self.__WB_MANIFEST);
 
+console.log(self)
+
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.

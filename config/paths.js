@@ -46,7 +46,7 @@ module.exports = {
   resolvePath: item => resolvePath(item),
   pathDistAssets: resolvePath('dist/assets'),
   pathBuildAssets: resolvePath('build/assets'),
-  pathIndex: resolveModule(resolvePath, 'src/index'),
+  pathIndexTs: resolveModule(resolvePath, 'src/index'),
   resolveModule: item => resolveModule(resolvePath ,item),
   pathManifest: resolveModule(resolvePath, 'src/manifest'), 
   pathSw: resolveModule(resolvePath, 'src/service-worker'),

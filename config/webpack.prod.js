@@ -1,7 +1,7 @@
+const { merge } = require('webpack-merge');
 const CopyPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { merge } = require('webpack-merge')
-const config = require('./wb-config')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const config = require('./webpack.config');
 const paths = require('./paths');
 
 module.exports = env => {
@@ -17,6 +17,7 @@ module.exports = env => {
           default: false,
         },
       },
+      minimize: false,
       runtimeChunk: false,
     },
     performance:{
@@ -35,12 +36,11 @@ module.exports = env => {
           }
         },
         {
-          test: /\.scss$/,
+          test: /\.s[ac]ss$/i,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            'resolve-url-loader',
-            'sass-loader?sourceMap'
+            'sass-loader'
           ]
         },
         {
