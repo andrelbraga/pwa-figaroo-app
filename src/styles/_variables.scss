@@ -1,0 +1,66 @@
+//BASE
+$color-base-blackish: #141413;
+$color-base-darkest: #282824;
+$color-base-dark: #9b9990;
+$color-base-soft: #e5e4dc;
+$color-base-light: #e9e9e2;
+$color-base-lightest: #f2f1ed;
+$color-base-whitish: #f6f6f3;
+$color-base-white: #ffffff;
+
+//BRAND
+$color-brand-primary-lightest: #ff9e00;
+$color-brand-primary-light: #ff9700;
+$color-brand-primary-soft: #ff7900;
+$color-brand-primary-dark: #ff5d00;
+$color-brand-primary-darkest: #f32735;
+$color-brand-secondary-lightest: #0074ff;
+$color-brand-secondary-light: #0057ff;
+$color-brand-secondary-soft: #004ce6;
+$color-brand-secondary-dark: #0040bf;
+$color-brand-secondary-darkest: #003b99;
+
+//ALERT
+$color-alert-primary-dark: #1fad4f;
+$color-alert-primary-light: #37dc6f;
+$color-alert-secondary-dark: #f43434;
+$color-alert-secondary-light: #ff4c4c;
+$color-alert-tertiary-dark: #ffb000;
+$color-alert-tertiary-lightest: #ffb000;
+
+//GRADIENT
+$color-gradient-primary: linear-gradient(
+  60.65deg,
+  #f32735 1.61%,
+  #f32735 15.52%,
+  #f32735 32.8%,
+  #ff2e1f 51.88%,
+  #ff5114 72.24%,
+  #ff7e07 93.4%,
+  #ff9700 103.86%
+);
+$color-gradient-secondary: linear-gradient(
+  227.47deg,
+  #37dc6f 41.4%,
+  #1fad4f 96.33%
+);
+$color-gradient-tertiary: linear-gradient(
+  228.05deg,
+  #9b9990 0%,
+  #141413 81.95%
+);
+
+//FONT WEIGHT
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+//FONT SIZE
+$font-size-xxxs: 12px;
+$font-size-xxs: 16px;
+$font-size-xs: 20px;
+$font-size-sm: 24px;
+$font-size-md: 32px;
+$font-size-lg: 40px;
+$font-size-xl: 48px;

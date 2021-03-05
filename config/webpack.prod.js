@@ -63,7 +63,6 @@ module.exports = env => {
       new CopyPlugin({
         patterns: [
           { from: paths.pathManifest, to: paths.pathBuild },
-          { from: paths.resolveModule('src/assets/media/manifest-icon-192'), to: paths.pathBuildAssets },
           { from: paths.resolveModule('src/assets/media/manifest-icon-512'), to: paths.pathBuildAssets }
         ],
       })

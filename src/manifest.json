@@ -1,13 +1,7 @@
 {
-  "short_name": "Pwa Default App",
-  "name": "Pwa Default App",
+  "short_name": "Fígaroo!",
+  "name": "Fígaroo!",
   "icons": [
-    {
-      "src": "assets/manifest-icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
     {
       "src": "assets/manifest-icon-512.png",
       "sizes": "512x512",
@@ -22,7 +16,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#05ce0f",
+  "theme_color": "#f32735",
   "orientation":"portrait",
-  "background_color": "#000000"
+  "background_color": "#f32735"
 }

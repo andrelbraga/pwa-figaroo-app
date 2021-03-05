@@ -4,7 +4,7 @@ const config = require('./webpack.config');
 const paths = require('./paths');
 
 module.exports = env => {
-  return merge(config(env), {     
+  return merge(config(env), {
     devtool: 'inline-source-map',
     module: {
       rules: [
@@ -18,7 +18,12 @@ module.exports = env => {
           use: [
             'style-loader',
             'css-loader',
-            'sass-loader'
+            {
+              loader: "sass-loader",
+              options: {
+                additionalData: `@import "@/styles/global.scss";`,
+              },
+            }
           ]
         },
         {
@@ -38,7 +43,6 @@ module.exports = env => {
       new CopyPlugin({
         patterns: [
           { from: paths.pathManifest, to: paths.pathDist },
-          { from: paths.resolveModule('src/assets/media/manifest-icon-192'), to: paths.pathDistAssets },
           { from: paths.resolveModule('src/assets/media/manifest-icon-512'), to: paths.pathDistAssets }
         ],
       })
