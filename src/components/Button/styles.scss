@@ -1,0 +1,14 @@
+.MuiButton-root {
+  font-size: $font-size-xxxs; 
+  font-weight: $font-weight-bold;
+  &.MuiButton-contained {
+    padding: $spacing-squish-nano;
+    border-radius: $border-radius-nano;
+    
+    &.MuiButton-containedPrimary {
+      &:hover {
+        background-color: $color-brand-primary-soft;
+      }
+    }
+  }
+}
