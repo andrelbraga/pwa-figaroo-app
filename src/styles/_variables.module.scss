@@ -64,3 +64,21 @@ $font-size-sm: 24px;
 $font-size-md: 32px;
 $font-size-lg: 40px;
 $font-size-xl: 48px;
+
+//SPACING SQUISH
+$spacing-squish-quarck: 4px 8px;
+$spacing-squish-nano: 8px 16px;
+$spacing-squish-xxs: 16px 24px;
+$spacing-squish-xs-full: 16px 100%;
+
+//BORDER RADIUS
+$border-radius-none: 0px;
+$border-radius-quarck: 4px;
+$border-radius-nano: 8px;
+$border-radius-xxs: 16px;
+$border-radius-sm: 14px;
+$border-radius-pill: 50%;
+
+:export {
+  primary: $color-brand-primary-dark;
+}
