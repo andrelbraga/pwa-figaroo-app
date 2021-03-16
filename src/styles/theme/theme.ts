@@ -6,6 +6,9 @@ export default createMuiTheme({
     primary: {
       main: variables.primary,
     },
+    secondary: {
+      main: variables.secondary
+    }
   },
   typography: {
     fontFamily: ["Open Sans", "sans-serif"].join(","),

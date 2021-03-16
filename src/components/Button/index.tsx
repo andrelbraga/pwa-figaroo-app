@@ -8,6 +8,7 @@ type Props = {
   children: React.ReactNode;
   color: "default" | "inherit" | "primary" | "secondary";
   variant?: "contained" | "outlined" | "text";
+  disabled?: boolean
 };
 
 export default function Button({

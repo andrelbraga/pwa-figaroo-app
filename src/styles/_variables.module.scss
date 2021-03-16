@@ -79,6 +79,10 @@ $border-radius-xxs: 16px;
 $border-radius-sm: 14px;
 $border-radius-pill: 50%;
 
+//OPACITY
+$disabled-opacity: 0.32;
+
 :export {
   primary: $color-brand-primary-dark;
+  secondary: $color-brand-secondary-dark;
 }

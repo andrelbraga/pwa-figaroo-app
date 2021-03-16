@@ -3,13 +3,8 @@ div {
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-
-  img {
-    fill: $color-base-whitish;
-    filter: brightness(0) invert(1);
-    width: 128px;
-    height: 128px;
-  }
+  
 }
