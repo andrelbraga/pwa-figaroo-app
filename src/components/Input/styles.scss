@@ -1,0 +1,31 @@
+.MuiInputBase-root {
+  
+  &.MuiFilledInput-root {
+    border-top-left-radius: $border-radius-nano;
+    border-top-right-radius: $border-radius-nano;
+    background-color: $color-base-white;
+    
+    .MuiInputAdornment-root {
+      margin-left: 0;
+      padding: 0 $spacing-inline-xxs;
+    }
+    
+  }
+  
+  &.MuiFilledInput-underline {
+    
+    &:before {
+      border-color: $color-base-white;
+    }
+  }
+  
+  &.MuiFilledInput-adornedEnd {
+    padding-right: 0;
+  }
+  
+}
+
+.MuiFormLabel-root {
+  color: $color-base-darkest;
+  font-weight: $font-weight-semibold;
+}

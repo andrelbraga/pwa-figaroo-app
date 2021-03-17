@@ -1,0 +1,54 @@
+.guest {
+  background: $color-base-whitish;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  
+  .navigation {
+    width: 100%;
+    height: $spacing-stack-xxxl;
+    
+    .MuiIconButton-root{
+      padding: $spacing-stack-xxs;
+    }
+    
+    .MuiSvgIcon-root {
+      width: $font-size-md;
+      height: $font-size-md;
+      fill: $color-base-blackish;
+    }
+  }
+  
+  .logo {
+    margin-bottom: $spacing-stack-md;
+  }
+  
+  .content {
+    display: flex;
+    flex: 1;
+    
+    .login {
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: space-between;
+      padding-left: $spacing-inline-xxs;
+      padding-right: $spacing-inline-xxs;
+      padding-bottom: $spacing-inline-lg;
+      
+      .inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        .title {
+          font-size: $font-size-sm;
+          font-weight: $font-weight-semibold;
+          padding-bottom: $spacing-stack-xxs;
+        }
+      }
+    }
+    
+  }
+}
