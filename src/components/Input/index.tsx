@@ -9,7 +9,7 @@ type InputProps = {
 
 type Props = {
   variant?: "filled" | "standard" | "outlined";
-  type?: "text" | "password";
+  type?: "text" | "password" | "email";
   label?: string;
   name?: string;
   error?: boolean;
@@ -20,6 +20,7 @@ type Props = {
   InputProps?: InputProps;
   inputRef?: any;
   disabled?: boolean;
+  autoCapitalize?: string;
   readOnly?: boolean;
   isLoading?: boolean;
 };
@@ -28,6 +29,7 @@ export default function Input({
   variant = "filled",
   type = "text",
   InputProps = {},
+  autoCapitalize = "none",
   isLoading = false,
   ...props
 }: Props) {
@@ -48,6 +50,9 @@ export default function Input({
         endAdornment: isLoading
           ? renderLoadingAdornment()
           : InputProps?.endAdornment,
+      }}
+      inputProps={{
+        autoCapitalize
       }}
       {...props}
     />

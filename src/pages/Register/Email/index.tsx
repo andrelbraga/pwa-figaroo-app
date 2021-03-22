@@ -9,23 +9,20 @@ import * as Actions from "@/store/actions";
 import { loginSelector } from "@/store/selectors/login";
 
 import { Button, Input } from "@/components";
-import validateEmail from '@/utils/validateEmail';
 
-const Name = () => {
+const Email = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   
   const schema = object().shape({
-    name: string().required("Por favor informe seu nome"),
-    surname: string().required("Por favor informe seu sobrenome")
+    email: string().email("E-mail inválido").required("Por favor informe seu email"),
   });
 
   const loginData = useSelector(loginSelector);
 
   const { register, handleSubmit, errors, formState } = useForm({
     defaultValues: {
-      name: loginData.name,
-      surname: loginData.surname
+      email: loginData.email,
     },
     mode: "onChange",
     resolver: yupResolver(schema),
@@ -34,18 +31,17 @@ const Name = () => {
   const [redirectTo, setRedirectTo] = useState("");
 
   const nextStep = (): void => {
-    const pathname = validateEmail(loginData.username) ? 
-    '/cadastro/telefone' :
-    '/cadastro/email';
-    
-    history.push({
-      pathname
-    })
-    
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      history.push({
+        pathname: "/cadastro/senha",
+      });
+    }, 2000);
   };
 
   useEffect((): any => {
-    if (!loginData.username) {
+    if (!loginData.name) {
       setRedirectTo("/login");
     }
   }, []);
@@ -54,43 +50,31 @@ const Name = () => {
     return <Redirect to={redirectTo} />;
   }
 
+  const [isLoading, setIsLoading] = useState(false);
+  
   return (
     <form onSubmit={handleSubmit(nextStep)} className="login">
         <div className="inner">
           <h1 className="title">
-            Vamos criar o seu cadastro? Primeiro, informe o seu <b>nome</b>.
+            {loginData.name}, qual é o seu <b>E-mail</b>?
           </h1>
           <Input
-            label="Nome"
-            name="name"
-            error={!!errors.name}
-            helperText={errors?.name?.message}
+            label="E-mail"
+            name="email"
+            type="email"
+            error={!!errors.email}
+            helperText={errors?.email?.message}
             inputRef={register}
             autoCapitalize="words"
             onChange={(e) =>
               dispatch(
                 Actions.setLoginData({
                   ...loginData,
-                  name: e.target.value,
+                  email: e.target.value,
                 })
               )
             }
-          />
-          <Input
-            label="Sobrenome"
-            name="surname"
-            error={!!errors.surname}
-            helperText={errors?.surname?.message}
-            inputRef={register}
-            autoCapitalize="words"
-            onChange={(e) =>
-            dispatch(
-              Actions.setLoginData({
-                ...loginData,
-                surname: e.target.value,
-              })
-            )
-          }
+            isLoading={isLoading}
           />
         </div>
 
@@ -104,4 +88,4 @@ const Name = () => {
     </form>
   );
 };
-export default Name;
+export default Email;

@@ -3,14 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string } from "yup";
 import { useForm } from "react-hook-form";
-import { Redirect, useLocation, useHistory } from "react-router-dom";
-import { RouteProps } from "react-router";
+import { useHistory } from "react-router-dom";
 
 import * as Actions from "@/store/actions";
 import { loginSelector } from "@/store/selectors/login";
 
 import { Button, Input, InputPassword } from "@/components";
-import "./styles.scss";
 
 const Username = () => {
   const history = useHistory();
@@ -26,7 +24,7 @@ const Username = () => {
     defaultValues: {
       username: loginData.username,
     },
-    mode: "onTouched",
+    mode: "onChange",
     resolver: yupResolver(schema),
   });
 
@@ -52,14 +50,14 @@ const Username = () => {
         <Input
           label="Telefone ou e-mail"
           error={!!errors.username}
-          helperText={errors.username ? errors.username.message : ""}
+          helperText={errors?.username?.message}
           name="username"
           inputRef={register}
           onChange={(e) =>
             dispatch(
               Actions.setLoginData({
                 ...loginData,
-                username: e.target.value,
+                username: e.target.value.toLowerCase(),
               })
             )
           }

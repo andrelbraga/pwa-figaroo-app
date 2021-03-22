@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Route, useHistory } from "react-router-dom";
 
-import { LoginUsername, LoginPassword, RegisterName } from "@/pages";
+import { LoginUsername, LoginPassword, RegisterName, RegisterEmail } from "@/pages";
 
 import "./styles.scss";
 import Primary from "@/assets/media/primary.png";
@@ -33,6 +33,7 @@ const GuestLayout = () => {
         <Route exact path="/login" component={LoginUsername} />
         <Route exact path="/login/senha" component={LoginPassword} />
         <Route exact path="/cadastro/nome" component={RegisterName} />
+        <Route exact path="/cadastro/email" component={RegisterEmail} />
       </div>
     </div>
   );
