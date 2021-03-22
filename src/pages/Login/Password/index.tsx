@@ -1,53 +1,80 @@
-import React, {useState, useEffect} from "react";
-import { RouteProps } from 'react-router';
-import { useHistory, Redirect, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RouteProps } from "react-router";
+import { useHistory, Redirect, useLocation } from "react-router-dom";
 
-import {Button, InputPassword} from "@/components";
+import * as Actions from "@/store/actions";
+import { loginSelector } from "@/store/selectors/login";
+
+import { Button, InputPassword } from "@/components";
 
 import "./styles.scss";
 
 interface Location {
-  location: RouteProps['location']
-  username: string
+  location: RouteProps["location"];
+  username: string;
 }
 
 const Password = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [redirectTo, setRedirectTo] = useState('');
-  const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
-  
+  const loginData = useSelector(loginSelector);
+
+  const [redirectTo, setRedirectTo] = useState("");
+
   const location = useLocation<Location>();
 
   const doLogin = () => {
-    console.log('can do login')
-  }
-  
+    console.log("can do login");
+  };
+
   useEffect((): any => {
-    if (!location?.state?.username) {
-      setRedirectTo('/login')
-    } else {
-      const { username } = location.state
-      setUsername(username)
+    if (!loginData.username) {
+      setRedirectTo("/login");
     }
-  }, [])
-  
+  }, []);
+
   if (redirectTo) {
-    return <Redirect to={redirectTo} />
+    return <Redirect to={redirectTo} />;
   }
-  
+
   return (
     <>
-    <div className="login">
-      <div className="inner">
-        <h1 className="title">Legal te ver por aqui, username! Informe a sua <b>senha</b>.</h1>
-        <InputPassword label="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <br/>
+      <div className="login">
+        <div className="inner">
+          <h1 className="title">
+            Legal te ver por aqui, username! Informe a sua <b>senha</b>.
+          </h1>
+          <InputPassword
+            label="Senha"
+            value={loginData.password}
+            onChange={(e) =>
+              dispatch(
+                Actions.setLoginData({ ...loginData, password: e.target.value })
+              )
+            }
+          />
+          <div className="password-recovery">
+            <Button
+              color="primary"
+              variant="text"
+              onClick={() => alert("Em breve!")}
+            >
+              Esqueceu a senha?
+            </Button>
+          </div>
+          <br />
+        </div>
+
+        <Button
+          color="primary"
+          onClick={() => doLogin()}
+          disabled={!loginData.password}
+        >
+          Entrar
+        </Button>
       </div>
-      
-      <Button color="primary" onClick={() => doLogin()} disabled={!password}>Entrar</Button>
-    </div>
     </>
   );
 };

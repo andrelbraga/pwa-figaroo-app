@@ -6,9 +6,10 @@ import "./styles.scss";
 type Props = {
   children: React.ReactNode;
   color: "default" | "inherit" | "primary" | "secondary";
-  onClick: () => void;
+  onClick?: () => void;
   variant?: "contained" | "outlined" | "text";
-  disabled?: boolean
+  type?: "button" | "submit";
+  disabled?: boolean;
 };
 
 export default function Button({
@@ -17,8 +18,8 @@ export default function Button({
   ...props
 }: Props) {
   return (
-      <MuiButton {...props} variant={variant}>
-        {children}
-      </MuiButton>
+    <MuiButton {...props} variant={variant}>
+      {children}
+    </MuiButton>
   );
 }
