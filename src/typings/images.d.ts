@@ -1,9 +1,9 @@
-declare module "*.png" {
-    const value: any;
-    export = value;
+declare module '*.png' {
+  const value: string;
+  export = value;
 }
 
 declare module '*.jpg' {
-    const src: string;
-    export default src;
+  const src: string;
+  export default src;
 }

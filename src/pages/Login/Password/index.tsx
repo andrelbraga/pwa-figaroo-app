@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RouteProps } from "react-router";
-import { useHistory, Redirect, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RouteProps } from 'react-router';
+import { useHistory, Redirect, useLocation } from 'react-router-dom';
 
-import * as Actions from "@/store/actions";
-import { loginSelector } from "@/store/selectors/login";
+import * as Actions from '@/store/actions';
+import { loginSelector } from '@/store/selectors/login';
 
-import { Button, InputPassword } from "@/components";
+import { Button, InputPassword } from '@/components';
 
-import "./styles.scss";
+import './styles.scss';
 
 interface Location {
-  location: RouteProps["location"];
+  location: RouteProps['location'];
   username: string;
 }
 
@@ -21,17 +21,17 @@ const Password = () => {
 
   const loginData = useSelector(loginSelector);
 
-  const [redirectTo, setRedirectTo] = useState("");
+  const [redirectTo, setRedirectTo] = useState('');
 
   const location = useLocation<Location>();
 
   const doLogin = () => {
-    console.log("can do login");
+    console.log('can do login');
   };
 
   useEffect((): any => {
     if (!loginData.username) {
-      setRedirectTo("/login");
+      setRedirectTo('/login');
     }
   }, []);
 
@@ -49,9 +49,12 @@ const Password = () => {
           <InputPassword
             label="Senha"
             value={loginData.password}
-            onChange={(e) =>
+            onChange={e =>
               dispatch(
-                Actions.setLoginData({ ...loginData, password: e.target.value })
+                Actions.setLoginData({
+                  ...loginData,
+                  password: e.target.value,
+                }),
               )
             }
           />
@@ -59,7 +62,7 @@ const Password = () => {
             <Button
               color="primary"
               variant="text"
-              onClick={() => alert("Em breve!")}
+              onClick={() => alert('Em breve!')}
             >
               Esqueceu a senha?
             </Button>

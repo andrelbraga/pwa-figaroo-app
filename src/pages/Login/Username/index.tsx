@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { object, string } from "yup";
-import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import React, { ReactElement, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { object, string } from 'yup';
+import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 
-import * as Actions from "@/store/actions";
-import { loginSelector } from "@/store/selectors/login";
+import * as Actions from '@/store/actions';
+import { loginSelector } from '@/store/selectors/login';
 
-import { Button, Input, InputPassword } from "@/components";
+import { Button, Input } from '@/components';
 
-const Username = () => {
+const Username: React.FC = (): ReactElement => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const schema = object().shape({
-    username: string().required("Por favor informe o telefone ou e-mail"),
+    username: string().required('Por favor informe o telefone ou e-mail'),
   });
 
   const loginData = useSelector(loginSelector);
@@ -24,21 +24,21 @@ const Username = () => {
     defaultValues: {
       username: loginData.username,
     },
-    mode: "onChange",
+    mode: 'onChange',
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: object) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       history.push({
-        pathname: "/cadastro/nome",
+        pathname: '/cadastro/nome',
       });
     }, 2000);
   };
-
-  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login">
@@ -53,12 +53,12 @@ const Username = () => {
           helperText={errors?.username?.message}
           name="username"
           inputRef={register}
-          onChange={(e) =>
+          onChange={e =>
             dispatch(
               Actions.setLoginData({
                 ...loginData,
                 username: e.target.value.toLowerCase(),
-              })
+              }),
             )
           }
           isLoading={isLoading}

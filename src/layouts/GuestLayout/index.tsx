@@ -1,18 +1,23 @@
-import React, { useState } from "react";
-import { Route, useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Route, useHistory } from 'react-router-dom';
 
-import { LoginUsername, LoginPassword, RegisterName, RegisterEmail } from "@/pages";
+import {
+  LoginUsername,
+  LoginPassword,
+  RegisterName,
+  RegisterEmail,
+} from '@/pages';
 
-import "./styles.scss";
-import Primary from "@/assets/media/primary.png";
-import IconButton from "@material-ui/core/IconButton";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import './styles.scss';
+import Primary from '@/assets/media/primary.png';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const GuestLayout = () => {
   const history = useHistory();
 
   const hideBackButton = () => {
-    return window.location.pathname === "/login";
+    return window.location.pathname === '/login';
   };
 
   const navigateBack = () => {

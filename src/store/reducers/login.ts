@@ -1,12 +1,12 @@
-import * as actionTypes from "@/store/actions/actionTypes";
-import { updateObject } from "@/store/updateObject";
+import * as actionTypes from '@/store/actions/actionTypes';
+import { updateObject } from '@/store/updateObject';
 
 const INITIAL_STATE = {
-  username: "",
-  password: "",
-  name: "",
-  surname: "",
-  email: ""
+  username: '',
+  password: '',
+  name: '',
+  surname: '',
+  email: '',
 };
 
 const setLoginData = (state = INITIAL_STATE, action: any) => {

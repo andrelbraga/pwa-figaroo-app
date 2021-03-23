@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { object, string } from "yup";
-import { useForm } from "react-hook-form";
-import { Redirect, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { object, string } from 'yup';
+import { useForm } from 'react-hook-form';
+import { Redirect, useHistory } from 'react-router-dom';
 
-import * as Actions from "@/store/actions";
-import { loginSelector } from "@/store/selectors/login";
+import * as Actions from '@/store/actions';
+import { loginSelector } from '@/store/selectors/login';
 
-import { Button, Input } from "@/components";
+import { Button, Input } from '@/components';
 import validateEmail from '@/utils/validateEmail';
 
 const Name = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   const schema = object().shape({
-    name: string().required("Por favor informe seu nome"),
-    surname: string().required("Por favor informe seu sobrenome")
+    name: string().required('Por favor informe seu nome'),
+    surname: string().required('Por favor informe seu sobrenome'),
   });
 
   const loginData = useSelector(loginSelector);
@@ -25,28 +25,27 @@ const Name = () => {
   const { register, handleSubmit, errors, formState } = useForm({
     defaultValues: {
       name: loginData.name,
-      surname: loginData.surname
+      surname: loginData.surname,
     },
-    mode: "onChange",
+    mode: 'onChange',
     resolver: yupResolver(schema),
   });
-  
-  const [redirectTo, setRedirectTo] = useState("");
+
+  const [redirectTo, setRedirectTo] = useState('');
 
   const nextStep = (): void => {
-    const pathname = validateEmail(loginData.username) ? 
-    '/cadastro/telefone' :
-    '/cadastro/email';
-    
+    const pathname = validateEmail(loginData.username)
+      ? '/cadastro/telefone'
+      : '/cadastro/email';
+
     history.push({
-      pathname
-    })
-    
+      pathname,
+    });
   };
 
   useEffect((): any => {
     if (!loginData.username) {
-      setRedirectTo("/login");
+      setRedirectTo('/login');
     }
   }, []);
 
@@ -56,51 +55,51 @@ const Name = () => {
 
   return (
     <form onSubmit={handleSubmit(nextStep)} className="login">
-        <div className="inner">
-          <h1 className="title">
-            Vamos criar o seu cadastro? Primeiro, informe o seu <b>nome</b>.
-          </h1>
-          <Input
-            label="Nome"
-            name="name"
-            error={!!errors.name}
-            helperText={errors?.name?.message}
-            inputRef={register}
-            autoCapitalize="words"
-            onChange={(e) =>
-              dispatch(
-                Actions.setLoginData({
-                  ...loginData,
-                  name: e.target.value,
-                })
-              )
-            }
-          />
-          <Input
-            label="Sobrenome"
-            name="surname"
-            error={!!errors.surname}
-            helperText={errors?.surname?.message}
-            inputRef={register}
-            autoCapitalize="words"
-            onChange={(e) =>
+      <div className="inner">
+        <h1 className="title">
+          Vamos criar o seu cadastro? Primeiro, informe o seu <b>nome</b>.
+        </h1>
+        <Input
+          label="Nome"
+          name="name"
+          error={!!errors.name}
+          helperText={errors?.name?.message}
+          inputRef={register}
+          autoCapitalize="words"
+          onChange={e =>
+            dispatch(
+              Actions.setLoginData({
+                ...loginData,
+                name: e.target.value,
+              }),
+            )
+          }
+        />
+        <Input
+          label="Sobrenome"
+          name="surname"
+          error={!!errors.surname}
+          helperText={errors?.surname?.message}
+          inputRef={register}
+          autoCapitalize="words"
+          onChange={e =>
             dispatch(
               Actions.setLoginData({
                 ...loginData,
                 surname: e.target.value,
-              })
+              }),
             )
           }
-          />
-        </div>
+        />
+      </div>
 
-        <Button
-          color="primary"
-          onClick={() => nextStep()}
-          disabled={!formState.isValid}
-        >
-          Próximo Passo
-        </Button>
+      <Button
+        color="primary"
+        onClick={() => nextStep()}
+        disabled={!formState.isValid}
+      >
+        Próximo Passo
+      </Button>
     </form>
   );
 };

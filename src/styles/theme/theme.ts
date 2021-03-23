@@ -1,5 +1,5 @@
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import variables from "@/styles/_variables.module.scss";
+import { createMuiTheme } from '@material-ui/core/styles';
+import variables from '@/styles/_variables.module.scss';
 
 export default createMuiTheme({
   palette: {
@@ -7,10 +7,10 @@ export default createMuiTheme({
       main: variables.primary,
     },
     secondary: {
-      main: variables.secondary
-    }
+      main: variables.secondary,
+    },
   },
   typography: {
-    fontFamily: ["Open Sans", "sans-serif"].join(","),
+    fontFamily: ['Open Sans', 'sans-serif'].join(','),
   },
 });

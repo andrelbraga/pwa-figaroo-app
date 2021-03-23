@@ -1,15 +1,15 @@
-import React from "react";
-import { CircularProgress, InputAdornment, TextField } from "@material-ui/core";
+import React from 'react';
+import { CircularProgress, InputAdornment, TextField } from '@material-ui/core';
 
-import "./styles.scss";
+import './styles.scss';
 
 type InputProps = {
   endAdornment?: React.ReactNode;
 };
 
 type Props = {
-  variant?: "filled" | "standard" | "outlined";
-  type?: "text" | "password" | "email";
+  variant?: 'filled' | 'standard' | 'outlined';
+  type?: 'text' | 'password' | 'email';
   label?: string;
   name?: string;
   error?: boolean;
@@ -26,10 +26,10 @@ type Props = {
 };
 
 export default function Input({
-  variant = "filled",
-  type = "text",
+  variant = 'filled',
+  type = 'text',
   InputProps = {},
-  autoCapitalize = "none",
+  autoCapitalize = 'none',
   isLoading = false,
   ...props
 }: Props) {
@@ -52,7 +52,7 @@ export default function Input({
           : InputProps?.endAdornment,
       }}
       inputProps={{
-        autoCapitalize
+        autoCapitalize,
       }}
       {...props}
     />

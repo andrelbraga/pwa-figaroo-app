@@ -1,2 +1,2 @@
 // export {} from '';
-export { setLoginData } from "./login";
+export { setLoginData } from './login';

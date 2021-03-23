@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import VisibilityOutlined from "@material-ui/icons/VisibilityOutlined";
-import VisibilityOffOutlined from "@material-ui/icons/VisibilityOffOutlined";
-import IconButton from "@material-ui/core/IconButton";
+import React, { useState } from 'react';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import VisibilityOutlined from '@material-ui/icons/VisibilityOutlined';
+import VisibilityOffOutlined from '@material-ui/icons/VisibilityOffOutlined';
+import IconButton from '@material-ui/core/IconButton';
 
-import { Input } from "@/components";
+import { Input } from '@/components';
 
-import "./styles.scss";
+import './styles.scss';
 
 type Props = {
   label?: string;
@@ -30,7 +30,7 @@ export default function InputPassword({ isLoading = false, ...props }: Props) {
 
   return (
     <Input
-      type={isVisible ? "text" : "password"}
+      type={isVisible ? 'text' : 'password'}
       isLoading={isLoading}
       InputProps={{
         endAdornment: renderEndAdornment(),
