@@ -12,9 +12,10 @@ declare const self: ServiceWorkerGlobalScope;
 clientsClaim();
 skipWaiting();
 
+// eslint-disable-next-line
 precacheAndRoute(self.__WB_MANIFEST);
 
-console.log(self);
+// console.log(self);
 
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
 registerRoute(

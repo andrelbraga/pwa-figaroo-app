@@ -10,7 +10,10 @@ import './styles.scss';
 
 type Props = {
   label?: string;
-  value?: string;
+  name?: string;
+  inputRef?: any;
+  error?: boolean;
+  helperText?: string;
   isLoading?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
@@ -39,3 +42,13 @@ export default function InputPassword({ isLoading = false, ...props }: Props) {
     />
   );
 }
+
+InputPassword.defaultProps = {
+  label: '',
+  inputRef: '',
+  isLoading: false,
+  name: '',
+  error: false,
+  helperText: '',
+  onChange: () => null,
+};

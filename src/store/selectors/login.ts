@@ -1,1 +1,1 @@
-export const loginSelector = (state: any) => state.login;
+export const loginSelector = (state: any): any => state.login;

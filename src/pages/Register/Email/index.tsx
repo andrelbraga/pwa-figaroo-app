@@ -31,6 +31,7 @@ const Email = () => {
   });
 
   const [redirectTo, setRedirectTo] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const nextStep = (): void => {
     setIsLoading(true);
@@ -46,13 +47,11 @@ const Email = () => {
     if (!loginData.name) {
       setRedirectTo('/login');
     }
-  }, []);
+  }, [loginData.name]);
 
   if (redirectTo) {
     return <Redirect to={redirectTo} />;
   }
-
-  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <form onSubmit={handleSubmit(nextStep)} className="login">

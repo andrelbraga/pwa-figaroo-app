@@ -1,7 +1,7 @@
 export const updateObject = (
-  oldObject: object,
-  updateProperties: object,
-): object => {
+  oldObject: Record<string, unknown>,
+  updateProperties: Record<string, unknown>,
+): Record<string, unknown> => {
   return {
     ...oldObject,
     ...updateProperties,

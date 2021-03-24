@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, useHistory } from 'react-router-dom';
 
 import {
@@ -6,6 +6,7 @@ import {
   LoginPassword,
   RegisterName,
   RegisterEmail,
+  RegisterPhone,
 } from '@/pages';
 
 import './styles.scss';
@@ -39,6 +40,7 @@ const GuestLayout = () => {
         <Route exact path="/login/senha" component={LoginPassword} />
         <Route exact path="/cadastro/nome" component={RegisterName} />
         <Route exact path="/cadastro/email" component={RegisterEmail} />
+        <Route exact path="/cadastro/telefone" component={RegisterPhone} />
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ const Name = () => {
     if (!loginData.username) {
       setRedirectTo('/login');
     }
-  }, []);
+  }, [loginData.username]);
 
   if (redirectTo) {
     return <Redirect to={redirectTo} />;

@@ -3,7 +3,7 @@ import { CircularProgress, InputAdornment, TextField } from '@material-ui/core';
 
 import './styles.scss';
 
-type InputProps = {
+type TInputProps = {
   endAdornment?: React.ReactNode;
 };
 
@@ -14,10 +14,9 @@ type Props = {
   name?: string;
   error?: boolean;
   helperText?: string;
-  value?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
-  InputProps?: InputProps;
+  InputProps?: TInputProps;
   inputRef?: any;
   disabled?: boolean;
   autoCapitalize?: string;
@@ -28,9 +27,9 @@ type Props = {
 export default function Input({
   variant = 'filled',
   type = 'text',
-  InputProps = {},
   autoCapitalize = 'none',
   isLoading = false,
+  InputProps = {},
   ...props
 }: Props) {
   const renderLoadingAdornment = () => {
@@ -47,14 +46,29 @@ export default function Input({
       type={type}
       InputProps={{
         ...InputProps,
+        autoCapitalize,
         endAdornment: isLoading
           ? renderLoadingAdornment()
           : InputProps?.endAdornment,
-      }}
-      inputProps={{
-        autoCapitalize,
       }}
       {...props}
     />
   );
 }
+
+Input.defaultProps = {
+  variant: 'filled',
+  type: 'text',
+  label: '',
+  name: '',
+  error: false,
+  helperText: '',
+  onChange: null,
+  placeholder: '',
+  InputProps: {},
+  inputRef: '',
+  disabled: false,
+  autoCapitalize: 'none',
+  readOnly: false,
+  isLoading: false,
+};

@@ -13,62 +13,36 @@ type Config = {
   onUpdate?: (registration: ServiceWorkerRegistration) => void;
 };
 
-export function register(config?: Config) {
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      const swUrl = `/service-worker.js`;
-
-      if (isLocalhost) {
-        checkValidServiceWorker(swUrl, config);
-        navigator.serviceWorker.ready.then(() => {
-          console.log(
-            'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://cra.link/PWA',
-          );
-        });
-      } else {
-        registerValidSW(swUrl, config);
-      }
-    });
-  }
-}
-
 function registerValidSW(swUrl: string, config?: Config) {
-  navigator.serviceWorker
-    .register(swUrl)
-    .then(registration => {
-      registration.onupdatefound = () => {
-        const installingWorker = registration.installing;
-        if (installingWorker == null) {
-          return;
-        }
-        installingWorker.onstatechange = () => {
-          if (installingWorker.state === 'installed') {
-            if (navigator.serviceWorker.controller) {
-              console.log(
-                'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://cra.link/PWA.',
-              );
+  navigator.serviceWorker.register(swUrl).then(registration => {
+    const res = registration;
+    res.onupdatefound = () => {
+      const installingWorker = res.installing;
+      if (installingWorker == null) {
+        return;
+      }
+      installingWorker.onstatechange = () => {
+        if (installingWorker.state === 'installed') {
+          if (navigator.serviceWorker.controller) {
+            // console.log(
+            //   'New content is available and will be used when all ' +
+            //     'tabs for this page are closed. See https://cra.link/PWA.',
+            // );
 
-              // Execute callback
-              if (config && config.onUpdate) {
-                config.onUpdate(registration);
-              }
-            } else {
-              console.log('Content is cached for offline use.');
-
-              // Execute callback
-              if (config && config.onSuccess) {
-                config.onSuccess(registration);
-              }
+            // Execute callback
+            if (config && config.onUpdate) {
+              config.onUpdate(registration);
             }
+          } else if (config && config.onSuccess) {
+            // console.log('Content is cached for offline use.');
+
+            // Execute callback
+            config.onSuccess(registration);
           }
-        };
+        }
       };
-    })
-    .catch(error => {
-      console.error('Error during service worker registration:', error);
-    });
+    };
+  });
 }
 
 function checkValidServiceWorker(swUrl: string, config?: Config) {
@@ -91,20 +65,36 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
       }
     })
     .catch(() => {
-      console.log(
-        'No internet connection found. App is running in offline mode.',
-      );
+      // console.log(
+      //   'No internet connection found. App is running in offline mode.',
+      // );
     });
+}
+
+export function register(config?: Config) {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      const swUrl = `/service-worker.js`;
+
+      if (isLocalhost) {
+        checkValidServiceWorker(swUrl, config);
+        navigator.serviceWorker.ready.then(() => {
+          // console.log(
+          //   'This web app is being served cache-first by a service ' +
+          //     'worker. To learn more, visit https://cra.link/PWA',
+          // );
+        });
+      } else {
+        registerValidSW(swUrl, config);
+      }
+    });
+  }
 }
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready
-      .then(registration => {
-        registration.unregister();
-      })
-      .catch(error => {
-        console.error(error.message);
-      });
+    navigator.serviceWorker.ready.then(registration => {
+      registration.unregister();
+    });
   }
 }

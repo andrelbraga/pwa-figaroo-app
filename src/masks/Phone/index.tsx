@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InputMask from 'react-input-mask';
 
 type Props = {
-  value: string;
   disabled?: boolean;
+  value: string;
   readOnly?: boolean;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  children: Function;
+  children: React.ReactNode;
 };
 
-const Phone = ({ value, onChange, children, ...props }: Props) => {
+const Phone = ({ onChange, children, ...props }: Props) => {
   return (
     <InputMask
       mask="(99) 9-9999-9999"
-      value={value}
       onChange={onChange}
       maskChar=""
       {...props}
@@ -23,3 +22,8 @@ const Phone = ({ value, onChange, children, ...props }: Props) => {
   );
 };
 export default Phone;
+
+Phone.defaultProps = {
+  disabled: false,
+  readOnly: false,
+};
