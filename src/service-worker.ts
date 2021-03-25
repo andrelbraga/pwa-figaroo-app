@@ -7,15 +7,15 @@ import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 
-
 declare const self: ServiceWorkerGlobalScope;
 
-clientsClaim()
-skipWaiting()
+clientsClaim();
+skipWaiting();
 
+// eslint-disable-next-line
 precacheAndRoute(self.__WB_MANIFEST);
 
-console.log(self)
+// console.log(self);
 
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
 registerRoute(
@@ -40,22 +40,24 @@ registerRoute(
     // Return true to signal that we want to use the handler.
     return true;
   },
-  createHandlerBoundToURL('/index.html')
+  createHandlerBoundToURL('/index.html'),
 );
 
 registerRoute(
-  (req) => req.url.origin === self.location.origin && req.url.pathname.endsWith('.js'),
-    new StaleWhileRevalidate({
-      cacheName: 'js',
-    })
+  req =>
+    req.url.origin === self.location.origin && req.url.pathname.endsWith('.js'),
+  new StaleWhileRevalidate({
+    cacheName: 'js',
+  }),
 );
 
 registerRoute(
-    (req) => req.url.origin === self.location.origin && req.url.pathname.endsWith('.png') && req.url.pathname.endsWith('.jpg'),
-    new StaleWhileRevalidate({
-      cacheName: 'images',
-      plugins: [
-        new ExpirationPlugin({ maxEntries: 50 }),
-      ],
-    })
+  req =>
+    req.url.origin === self.location.origin &&
+    req.url.pathname.endsWith('.png') &&
+    req.url.pathname.endsWith('.jpg'),
+  new StaleWhileRevalidate({
+    cacheName: 'images',
+    plugins: [new ExpirationPlugin({ maxEntries: 50 })],
+  }),
 );

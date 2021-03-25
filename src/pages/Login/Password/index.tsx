@@ -1,53 +1,98 @@
-import React, {useState, useEffect} from "react";
-import { RouteProps } from 'react-router';
-import { useHistory, Redirect, useLocation } from 'react-router-dom';
+import React, { ReactElement, useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { object, string } from 'yup';
+import { useForm } from 'react-hook-form';
 
-import {Button, InputPassword} from "@/components";
+import * as Actions from '@/store/actions';
+import { loginSelector } from '@/store/selectors/login';
 
-import "./styles.scss";
+import { Button, InputPassword, Loader } from '@/components';
 
-interface Location {
-  location: RouteProps['location']
-  username: string
-}
+import './styles.scss';
 
-const Password = () => {
-  const history = useHistory();
+const Password: React.FC = (): ReactElement => {
+  const dispatch = useDispatch();
+
+  const schema = object().shape({
+    password: string()
+      .required('Por favor informe sua senha')
+      .min(6, 'Mínimo de 6 caracteres'),
+  });
+
+  const loginData = useSelector(loginSelector);
 
   const [redirectTo, setRedirectTo] = useState('');
-  const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
-  
-  const location = useLocation<Location>();
+  const [pageLoader, setPageLoader] = useState(false);
+
+  const { register, handleSubmit, errors, formState } = useForm({
+    defaultValues: {
+      password: loginData.password,
+    },
+    mode: 'onChange',
+    resolver: yupResolver(schema),
+  });
 
   const doLogin = () => {
-    console.log('can do login')
-  }
-  
+    setPageLoader(true);
+  };
+
   useEffect((): any => {
-    if (!location?.state?.username) {
-      setRedirectTo('/login')
-    } else {
-      const { username } = location.state
-      setUsername(username)
+    if (!loginData.username) {
+      setRedirectTo('/login');
     }
-  }, [])
-  
+  }, [loginData.username]);
+
   if (redirectTo) {
-    return <Redirect to={redirectTo} />
+    return <Redirect to={redirectTo} />;
   }
-  
+
   return (
     <>
-    <div className="login">
-      <div className="inner">
-        <h1 className="title">Legal te ver por aqui, username! Informe a sua <b>senha</b>.</h1>
-        <InputPassword label="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <br/>
-      </div>
-      
-      <Button color="primary" onClick={() => doLogin()} disabled={!password}>Entrar</Button>
-    </div>
+      <form onSubmit={handleSubmit(doLogin)} className="login">
+        <div className="inner">
+          <h1 className="title">
+            Legal te ver por aqui, username! Informe a sua <b>senha</b>.
+          </h1>
+          <InputPassword
+            label="Senha"
+            inputRef={register}
+            name="password"
+            error={!!errors.password}
+            helperText={errors?.password?.message}
+            onChange={e =>
+              dispatch(
+                Actions.setLoginData({
+                  ...loginData,
+                  password: e.target.value.toLowerCase(),
+                }),
+              )
+            }
+          />
+          <div className="password-recovery">
+            <Button
+              color="primary"
+              variant="text"
+              onClick={() => {
+                /* alert('Em breve!') */
+              }}
+            >
+              Esqueceu a senha?
+            </Button>
+          </div>
+          <br />
+        </div>
+
+        <Button
+          color="primary"
+          onClick={() => doLogin()}
+          disabled={!formState.isValid}
+        >
+          Entrar
+        </Button>
+      </form>
+      {pageLoader && <Loader />}
     </>
   );
 };
