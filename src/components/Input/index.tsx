@@ -14,6 +14,7 @@ type Props = {
   name?: string;
   error?: boolean;
   helperText?: string;
+  mask?: (text: string) => string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   InputProps?: TInputProps;
@@ -27,8 +28,10 @@ type Props = {
 export default function Input({
   variant = 'filled',
   type = 'text',
+  mask = (text: string) => text,
   autoCapitalize = 'none',
   isLoading = false,
+  onChange = () => null,
   InputProps = {},
   ...props
 }: Props) {
@@ -38,6 +41,13 @@ export default function Input({
         <CircularProgress size={24} />
       </InputAdornment>
     );
+  };
+
+  const inputChanged = (event: any) => {
+    const maskedEvent = event;
+    maskedEvent.target.value = mask(event.target.value);
+
+    onChange(maskedEvent);
   };
 
   return (
@@ -50,6 +60,7 @@ export default function Input({
         endAdornment: isLoading
           ? renderLoadingAdornment()
           : InputProps?.endAdornment,
+        onChange: inputChanged,
       }}
       {...props}
     />
@@ -66,6 +77,7 @@ Input.defaultProps = {
   onChange: null,
   placeholder: '',
   InputProps: {},
+  mask: (text: string) => text,
   inputRef: '',
   disabled: false,
   autoCapitalize: 'none',

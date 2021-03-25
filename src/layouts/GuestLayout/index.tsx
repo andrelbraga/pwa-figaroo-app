@@ -7,6 +7,7 @@ import {
   RegisterName,
   RegisterEmail,
   RegisterPhone,
+  RegisterPassword,
 } from '@/pages';
 
 import './styles.scss';
@@ -41,6 +42,7 @@ const GuestLayout = () => {
         <Route exact path="/cadastro/nome" component={RegisterName} />
         <Route exact path="/cadastro/email" component={RegisterEmail} />
         <Route exact path="/cadastro/telefone" component={RegisterPhone} />
+        <Route exact path="/cadastro/senha" component={RegisterPassword} />
       </div>
     </div>
   );

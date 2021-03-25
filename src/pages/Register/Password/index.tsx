@@ -1,52 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string } from 'yup';
+import { object, string, ref } from 'yup';
 import { useForm } from 'react-hook-form';
 import { Redirect, useHistory } from 'react-router-dom';
 
 import * as Actions from '@/store/actions';
 import { loginSelector } from '@/store/selectors/login';
-import phoneMask from '@/masks/Phone';
 
-import { Button, Input } from '@/components';
+import { Button, InputPassword } from '@/components';
+import validateEmail from '@/utils/validateEmail';
 
-const Phone = () => {
+const Password = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const schema = object().shape({
-    phone: string().required('Por favor informe seu telefone'),
+    password: string()
+      .required('Por favor informe sua senha')
+      .min(6, 'Mínimo de 6 caracteres'),
+    passwordConfirmation: string().oneOf(
+      [ref('password'), null],
+      'A confirmação deve ser igual a senha',
+    ),
   });
 
   const loginData = useSelector(loginSelector);
 
   const { register, handleSubmit, errors, formState } = useForm({
     defaultValues: {
-      phone: loginData.phone,
+      password: '',
+      passwordConfirmation: '',
     },
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
 
   const [redirectTo, setRedirectTo] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const nextStep = (): void => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      history.push({
-        pathname: '/cadastro/senha',
-      });
-    }, 2000);
+    const pathname = validateEmail(loginData.username)
+      ? '/cadastro/telefone'
+      : '/cadastro/email';
+
+    history.push({
+      pathname,
+    });
   };
 
   useEffect((): any => {
-    if (!loginData.name) {
+    if (!loginData.email || !loginData.phone) {
       setRedirectTo('/login');
     }
-  }, [loginData.name]);
+  }, [loginData.email, loginData.phone]);
 
   if (redirectTo) {
     return <Redirect to={redirectTo} />;
@@ -56,24 +62,30 @@ const Phone = () => {
     <form onSubmit={handleSubmit(nextStep)} className="login">
       <div className="inner">
         <h1 className="title">
-          {loginData.name}, qual é o seu <b>telefone</b>?
+          Luciano, vamos deixar sua conta mais segura?
+          <br /> Crie uma <b>senha</b>.
         </h1>
-        <Input
-          label="Telefone"
-          name="phone"
-          error={!!errors.phone}
-          helperText={errors?.phone?.message}
+        <InputPassword
+          label="Senha"
           inputRef={register}
-          mask={phoneMask}
+          name="password"
+          error={!!errors.password}
+          helperText={errors?.password?.message}
           onChange={e =>
             dispatch(
               Actions.setLoginData({
                 ...loginData,
-                phone: e.target.value,
+                password: e.target.value.toLowerCase(),
               }),
             )
           }
-          isLoading={isLoading}
+        />
+        <InputPassword
+          label="Confirmar senha"
+          inputRef={register}
+          name="passwordConfirmation"
+          error={!!errors.passwordConfirmation}
+          helperText={errors?.passwordConfirmation?.message}
         />
       </div>
 
@@ -87,4 +99,4 @@ const Phone = () => {
     </form>
   );
 };
-export default Phone;
+export default Password;
