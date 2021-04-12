@@ -32,11 +32,6 @@ $color-alert-tertiary-lightest: #ffb000;
 $color-gradient-primary: linear-gradient(
   60.65deg,
   #f32735 1.61%,
-  #f32735 15.52%,
-  #f32735 32.8%,
-  #ff2e1f 51.88%,
-  #ff5114 72.24%,
-  #ff7e07 93.4%,
   #ff9700 103.86%
 );
 $color-gradient-secondary: linear-gradient(
@@ -107,4 +102,5 @@ $disabled-opacity: 0.32;
 :export {
   primary: $color-brand-primary-dark;
   secondary: $color-brand-secondary-dark;
+  baseDarkest: $color-base-darkest;
 }

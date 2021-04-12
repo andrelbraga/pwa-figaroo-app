@@ -36,6 +36,10 @@ const Password: React.FC = (): ReactElement => {
 
   const doLogin = () => {
     setPageLoader(true);
+    setTimeout(() => {
+      setPageLoader(false);
+      setRedirectTo('/home');
+    }, 3000);
   };
 
   useEffect((): any => {

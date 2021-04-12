@@ -34,10 +34,23 @@ const Name = () => {
   const [redirectTo, setRedirectTo] = useState('');
 
   const nextStep = (): void => {
-    const pathname = validateEmail(loginData.username)
-      ? '/cadastro/telefone'
-      : '/cadastro/email';
-
+    const isEmail = validateEmail(loginData.username);
+    const pathname = isEmail ? '/cadastro/telefone' : '/cadastro/email';
+    if (isEmail) {
+      dispatch(
+        Actions.setLoginData({
+          ...loginData,
+          email: loginData.username,
+        }),
+      );
+    } else {
+      dispatch(
+        Actions.setLoginData({
+          ...loginData,
+          phone: loginData.username,
+        }),
+      );
+    }
     history.push({
       pathname,
     });

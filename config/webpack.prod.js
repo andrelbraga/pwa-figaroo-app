@@ -40,7 +40,12 @@ module.exports = env => {
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            'sass-loader'
+            {
+              loader: "sass-loader",
+              options: {
+                additionalData: `@import "@/styles/global.scss";`,
+              },
+            }
           ]
         },
         {

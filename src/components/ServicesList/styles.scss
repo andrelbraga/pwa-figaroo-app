@@ -1,0 +1,19 @@
+.services-list {
+  margin: $spacing-stack-sm 0;
+
+  h3 {
+    color: $color-base-darkest;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+  }
+
+  .MuiFormControlLabel-root {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
+  .MuiFormControlLabel-label {
+    display: flex;
+    width: 100%;
+  }
+}

@@ -8,8 +8,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import * as Actions from '@/store/actions';
 import { loginSelector } from '@/store/selectors/login';
 
-import { Button, InputPassword } from '@/components';
-import validateEmail from '@/utils/validateEmail';
+import { Button, InputPassword, Loader } from '@/components';
 
 const Password = () => {
   const history = useHistory();
@@ -37,15 +36,16 @@ const Password = () => {
   });
 
   const [redirectTo, setRedirectTo] = useState('');
+  const [pageLoader, setPageLoader] = useState(false);
 
-  const nextStep = (): void => {
-    const pathname = validateEmail(loginData.username)
-      ? '/cadastro/telefone'
-      : '/cadastro/email';
-
-    history.push({
-      pathname,
-    });
+  const doRegister = (): void => {
+    setPageLoader(true);
+    setTimeout(() => {
+      setPageLoader(false);
+      history.push({
+        pathname: '/home',
+      });
+    }, 2000);
   };
 
   useEffect((): any => {
@@ -59,44 +59,47 @@ const Password = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(nextStep)} className="login">
-      <div className="inner">
-        <h1 className="title">
-          Luciano, vamos deixar sua conta mais segura?
-          <br /> Crie uma <b>senha</b>.
-        </h1>
-        <InputPassword
-          label="Senha"
-          inputRef={register}
-          name="password"
-          error={!!errors.password}
-          helperText={errors?.password?.message}
-          onChange={e =>
-            dispatch(
-              Actions.setLoginData({
-                ...loginData,
-                password: e.target.value.toLowerCase(),
-              }),
-            )
-          }
-        />
-        <InputPassword
-          label="Confirmar senha"
-          inputRef={register}
-          name="passwordConfirmation"
-          error={!!errors.passwordConfirmation}
-          helperText={errors?.passwordConfirmation?.message}
-        />
-      </div>
+    <>
+      <form onSubmit={handleSubmit(doRegister)} className="login">
+        <div className="inner">
+          <h1 className="title">
+            Luciano, vamos deixar sua conta mais segura?
+            <br /> Crie uma <b>senha</b>.
+          </h1>
+          <InputPassword
+            label="Senha"
+            inputRef={register}
+            name="password"
+            error={!!errors.password}
+            helperText={errors?.password?.message}
+            onChange={e =>
+              dispatch(
+                Actions.setLoginData({
+                  ...loginData,
+                  password: e.target.value.toLowerCase(),
+                }),
+              )
+            }
+          />
+          <InputPassword
+            label="Confirmar senha"
+            inputRef={register}
+            name="passwordConfirmation"
+            error={!!errors.passwordConfirmation}
+            helperText={errors?.passwordConfirmation?.message}
+          />
+        </div>
 
-      <Button
-        color="primary"
-        onClick={() => nextStep()}
-        disabled={!formState.isValid}
-      >
-        Próximo Passo
-      </Button>
-    </form>
+        <Button
+          color="primary"
+          onClick={() => doRegister()}
+          disabled={!formState.isValid}
+        >
+          Próximo Passo
+        </Button>
+      </form>
+      {pageLoader && <Loader />}
+    </>
   );
 };
 export default Password;

@@ -1,0 +1,24 @@
+.services-list-item {
+  margin: $spacing-stack-nano 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  p {
+    margin: 0;
+  }
+
+  .name-row {
+    color: $color-base-darkest;
+    font-size: $font-size-xxs;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .description {
+    font-weight: $font-weight-light;
+    color: $color-base-darkest;
+    font-size: $font-size-xxxs;
+  }
+}

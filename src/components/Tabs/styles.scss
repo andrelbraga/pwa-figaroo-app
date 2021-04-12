@@ -1,0 +1,26 @@
+.tabs {
+  background: $color-gradient-primary;
+
+  .MuiTabs-root {
+    position: relative;
+    background: #fff;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+    .MuiButtonBase-root {
+      margin: $spacing-inline-xxs $spacing-inline-nano 0 $spacing-inline-nano;
+    }
+
+    .MuiTab-wrapper {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-xxs;
+      color: $color-base-blackish;
+    }
+
+    .MuiTabs-indicator {
+      border-top-right-radius: $spacing-stack-quarck;
+      border-top-left-radius: $spacing-stack-quarck;
+      height: 3px;
+      background-color: $color-base-blackish;
+    }
+  }
+}

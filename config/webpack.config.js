@@ -21,7 +21,8 @@ module.exports = env => {
       extensions: ['.ts', '.tsx', '.js', 'scss'],
       alias: {
         '@': paths.pathSrc
-      }
+      },
+      symlinks: false
     },
     plugins: [
       new CleanWebpackPlugin(),
@@ -62,13 +63,11 @@ module.exports = env => {
           
         },
       }),
-      new WorkboxPlugin.InjectManifest({
+      /*new WorkboxPlugin.InjectManifest({
         swSrc: paths.pathSw,
         exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
-      })
+      })*/
     ]
   } 
 }
-
-

@@ -1,21 +1,16 @@
 import React from 'react';
-import { Route, useHistory } from 'react-router-dom';
-
-import {
-  LoginUsername,
-  LoginPassword,
-  RegisterName,
-  RegisterEmail,
-  RegisterPhone,
-  RegisterPassword,
-} from '@/pages';
+import { useHistory } from 'react-router-dom';
 
 import './styles.scss';
 import Primary from '@/assets/media/primary.png';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-const GuestLayout = () => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const GuestLayout = ({ children }: Props) => {
   const history = useHistory();
 
   const hideBackButton = () => {
@@ -36,14 +31,7 @@ const GuestLayout = () => {
         )}
       </div>
       <img className="logo" src={Primary} alt="Logo da Fígaroo!" />
-      <div className="content">
-        <Route exact path="/login" component={LoginUsername} />
-        <Route exact path="/login/senha" component={LoginPassword} />
-        <Route exact path="/cadastro/nome" component={RegisterName} />
-        <Route exact path="/cadastro/email" component={RegisterEmail} />
-        <Route exact path="/cadastro/telefone" component={RegisterPhone} />
-        <Route exact path="/cadastro/senha" component={RegisterPassword} />
-      </div>
+      <div className="content">{children}</div>
     </div>
   );
 };

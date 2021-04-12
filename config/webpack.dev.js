@@ -5,13 +5,25 @@ const paths = require('./paths');
 
 module.exports = env => {
   return merge(config(env), {
-    devtool: 'inline-source-map',
+    devtool: 'eval-cheap-module-source-map',
+    optimization: {
+      runtimeChunk: 'single',
+      removeAvailableModules: false,
+      removeEmptyChunks: false,
+      splitChunks: false,
+    },
+    output: {
+      pathinfo: false,
+    },
     module: {
       rules: [
         {
           test: /\.ts(x?)$/,
           loader: 'ts-loader',
-          exclude: /node_modules/
+          exclude: /node_modules/,
+          options: {
+            transpileOnly: true,
+          }
         },
         {
           test: /\.s[ac]ss$/i,
@@ -50,6 +62,8 @@ module.exports = env => {
     devServer: {
       contentBase: paths.pathPublic,
       port: 9090,
+      historyApiFallback: true,
+      hot: true,
       open: true
     }
   })

@@ -1,0 +1,101 @@
+.header {
+  &.schedule {
+    .inner {
+      margin-bottom: $spacing-stack-xl;
+    }
+
+    // component
+    .summary-avatar {
+      margin-bottom: $spacing-stack-xxs;
+
+      .avatar-inner {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        p {
+          margin: 0 0 0 $spacing-inline-nano;
+          color: $color-base-blackish;
+          font-size: $font-size-xxxs;
+        }
+
+        img {
+          height: 48px;
+          width: 48px;
+          border-radius: 20px;
+        }
+
+        .username {
+          font-size: $font-size-xs;
+          font-weight: $font-weight-semibold;
+          line-height: 24px;
+        }
+      }
+    }
+
+    .summary-services {
+      margin-bottom: $spacing-stack-xxs;
+
+      .services {
+        padding: $spacing-stack-xxs;
+        border: 1px solid $color-base-soft;
+        border-radius: $border-radius-nano $border-radius-nano 0px 0px;
+        display: flex;
+
+        .border {
+          width: 4px;
+          background-color: $color-brand-primary-dark;
+          border-radius: 22px;
+          margin-right: $spacing-inline-nano;
+        }
+
+        .summary-services-list {
+          width: 100%;
+
+          .summary-services-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: $spacing-stack-nano 0;
+
+            p {
+              margin: 0;
+            }
+
+            .service-name {
+              b {
+                font-weight: $font-weight-semibold;
+              }
+              font-size: $font-size-xxs;
+            }
+
+            .time {
+              color: $color-base-dark;
+              font-size: $font-size-xxxs;
+            }
+          }
+        }
+      }
+
+      .add-service {
+        padding: $spacing-stack-nano $spacing-inline-xxs;
+        border: 1px dashed $color-brand-primary-dark;
+        border-radius: 0px 0px $border-radius-nano $border-radius-nano;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .tabs {
+      background: transparent;
+      .MuiTabs-root .MuiButtonBase-root {
+        margin: 0;
+
+        .MuiTab-wrapper {
+          font-size: $font-size-xxxs;
+        }
+      }
+    }
+  }
+}

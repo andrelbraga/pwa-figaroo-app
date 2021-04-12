@@ -13,4 +13,7 @@ self.__WB_DISABLE_DEV_LOGS = process.env.NODE_ENV !== 'development';
 ReactDOM.render(<App />, document.getElementById('root'));
 
 /* Register do service worker */
-serviceWorkerRegistration.register();
+if (process.env.NODE_ENV === 'production') {
+  serviceWorkerRegistration.register();
+}
+if (module.hot) module.hot.accept();

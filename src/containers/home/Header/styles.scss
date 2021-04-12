@@ -1,0 +1,110 @@
+.header {
+  background: $color-base-white;
+  display: flex;
+  justify-content: center;
+  padding-left: $spacing-inline-xxs;
+  padding-right: $spacing-inline-xxs;
+  flex-direction: column;
+
+  .inner {
+    margin-top: $spacing-stack-xxxl;
+    margin-bottom: $spacing-stack-xxxl;
+    width: 100%;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        margin-right: $spacing-inline-xxs;
+      }
+
+      .beta-badge {
+        background: $color-brand-primary-darkest;
+        color: $color-base-whitish;
+        font-size: $font-size-xxxs;
+        font-weight: $font-weight-semibold;
+        margin: 0;
+        padding: $spacing-squish-quarck;
+        border-radius: 38px;
+      }
+    }
+
+    .user-infos {
+      .list-item {
+        font-size: $font-size-xxs;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: $spacing-stack-xxs 0;
+
+        p {
+          margin: 0;
+        }
+
+        .label {
+          font-weight: $font-weight-semibold;
+        }
+
+        .with-icon {
+          display: flex;
+          align-items: center;
+
+          .MuiButtonBase-root {
+            padding: 0 0 0 8px;
+
+            a {
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*.home {
+  background: $color-gradient-primary;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: $spacing-stack-xxs $spacing-inline-lg 0 $spacing-inline-lg;
+
+    .logo {
+      img {
+        width: 72px;
+        height: 72px;
+      }
+    }
+
+    .title {
+      color: $color-base-whitish;
+      margin-left: $spacing-inline-nano;
+      word-break: break-word;
+
+      h1 {
+        font-weight: $font-weight-bold;
+        font-size: $font-size-xs;
+      }
+
+      h2 {
+        font-size: $font-size-xxs;
+      }
+    }
+  }
+
+  .arrow {
+    .MuiIconButton-root {
+      padding: 0;
+      .MuiSvgIcon-root {
+        fill: $color-base-whitish;
+      }
+    }
+  }
+}*/

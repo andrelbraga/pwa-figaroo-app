@@ -1,0 +1,10 @@
+.services {
+  padding: $spacing-stack-lg $spacing-inline-xxs;
+  position: relative;
+  .title {
+    color: $color-base-blackish;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-stack-sm;
+  }
+}

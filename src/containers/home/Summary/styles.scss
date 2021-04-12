@@ -1,0 +1,107 @@
+.summary {
+  background: $color-base-white;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.12),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  max-height: 9vh;
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+  will-change: height;
+  z-index: 10;
+
+  .MuiSvgIcon-root {
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+    color: $color-base-darkest;
+  }
+
+  &.expanded {
+    max-height: 450px;
+    will-change: height;
+
+    .MuiSvgIcon-root {
+      transform: rotate(180deg);
+    }
+  }
+
+  .holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1.5px solid $color-base-lightest;
+    justify-content: center;
+    height: 9vh;
+
+    .MuiIconButton-root {
+      padding: 0;
+    }
+
+    h2 {
+      font-weight: $font-weight-semibold;
+      color: $color-base-darkest;
+      font-size: $font-size-xxs;
+      margin-top: $spacing-stack-quarck;
+      margin-bottom: $spacing-stack-nano;
+    }
+  }
+
+  .content {
+    background: $color-base-white;
+    z-index: 5;
+    padding: $spacing-squish-nano;
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        margin-bottom: $spacing-inline-quarck;
+      }
+
+      b {
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: $spacing-stack-xxs 0;
+
+      p {
+        margin-bottom: 0;
+        font-size: $font-size-xs;
+      }
+
+      b {
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    .infos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-stack-xxs;
+
+      p {
+        margin-bottom: 0;
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    hr {
+      border-top: 2px solid $color-base-soft;
+      margin: $spacing-stack-xxs 0;
+    }
+
+    .action {
+      padding: $spacing-stack-sm 0;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
