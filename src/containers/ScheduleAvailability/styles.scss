@@ -1,3 +1,28 @@
 .schedule-availability {
   padding: 0 $spacing-inline-nano;
+
+  h1 {
+    color: $color-base-blackish;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    margin-top: $spacing-stack-sm;
+    margin-bottom: $spacing-stack-nano;
+  }
+
+  .availability-counter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: $spacing-stack-sm;
+
+    p {
+      margin: 0 0 0 $spacing-inline-quarck;
+      color: $color-base-darkest;
+
+      b {
+        color: $color-brand-primary-dark;
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
 }

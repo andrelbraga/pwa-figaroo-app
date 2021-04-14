@@ -1,0 +1,48 @@
+.time-box {
+  border-radius: $border-radius-nano;
+  border: 1px dashed $color-brand-primary-dark;
+  padding: $spacing-inline-xxs;
+  margin-bottom: $spacing-stack-nano;
+  background: $color-base-light;
+
+  .MuiIconButton-root {
+    padding: 0;
+    width: 100%;
+  }
+
+  &.is-break {
+    border: 0;
+  }
+
+  &.to-finish {
+    border-style: solid;
+  }
+
+  .infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    p {
+      margin: 0;
+      font-size: $font-size-xxs;
+    }
+
+    .clock {
+      color: $color-base-darkest;
+      font-weight: $font-weight-semibold;
+    }
+
+    .availability {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .duration {
+        color: $color-base-dark;
+        font-size: $font-size-xxxs;
+      }
+    }
+  }
+}

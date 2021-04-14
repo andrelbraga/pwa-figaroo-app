@@ -8,3 +8,5 @@ export { default as HomeAvatar } from './HomeAvatar';
 export { default as ServicesList } from './ServicesList';
 export { default as ServicesListItem } from './ServicesListItem';
 export { default as Calendar } from './Calendar';
+export { default as CalendarListItem } from './CalendarListItem';
+export { default as TimeBox } from './TimeBox';

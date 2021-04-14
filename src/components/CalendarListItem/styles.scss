@@ -1,0 +1,98 @@
+.calendar-list-item {
+  width: 12.5%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .day-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .day-type {
+    color: $color-base-dark;
+    font-size: $font-size-xxxs;
+    margin: 0 0 $spacing-stack-quarck 0;
+    text-align: center;
+  }
+
+  .day-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .number {
+      font-size: $font-size-xs;
+      color: $color-base-darkest;
+      line-height: 20px;
+      font-weight: $font-weight-semibold;
+    }
+    .title {
+      font-size: $font-size-xxxs;
+      font-weight: $font-weight-semibold;
+      text-transform: capitalize;
+      color: $color-base-darkest;
+    }
+    .ellipse {
+      width: 4px;
+      height: 4px;
+      margin-top: $spacing-stack-quarck;
+      background: $color-base-dark;
+      border-radius: $border-radius-pill;
+
+      &.disabled {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .MuiButtonBase-root {
+    padding: $spacing-inline-nano;
+    min-width: 0;
+    border-radius: $border-radius-xxs;
+    background-color: $color-base-white;
+    width: 100%;
+
+    &.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.Mui-disabled {
+      background-color: $color-base-light;
+      opacity: 1;
+      color: $color-base-dark;
+    }
+  }
+
+  &.disabled {
+    .number {
+      color: $color-base-dark;
+    }
+    .title {
+      color: $color-base-dark;
+    }
+  }
+
+  &.active {
+    .day-wrapper {
+      .number {
+        color: $color-base-whitish;
+      }
+
+      .ellipse {
+        background: $color-base-white;
+      }
+    }
+
+    .title {
+      color: $color-base-whitish;
+    }
+
+    .MuiButtonBase-root {
+      background-color: $color-brand-primary-dark;
+    }
+  }
+}
