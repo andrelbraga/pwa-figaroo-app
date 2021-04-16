@@ -10,6 +10,7 @@ type Props = {
   variant?: 'contained' | 'outlined' | 'text';
   type?: 'button' | 'submit';
   disabled?: boolean;
+  fullWidth?: boolean;
 };
 
 const Button = ({ children, variant, ...props }: Props): React.ReactElement => {
@@ -26,4 +27,5 @@ Button.defaultProps = {
   onClick: () => null,
   type: 'button',
   disabled: false,
+  fullWidth: false,
 };

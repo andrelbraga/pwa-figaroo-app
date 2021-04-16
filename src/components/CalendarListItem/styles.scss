@@ -65,6 +65,10 @@
       opacity: 1;
       color: $color-base-dark;
     }
+
+    &.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary:hover {
+      background-color: $color-brand-primary-dark;
+    }
   }
 
   &.disabled {

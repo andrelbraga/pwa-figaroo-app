@@ -1,0 +1,17 @@
+.schedule-success {
+  background: $color-gradient-primary;
+
+  .logo {
+    padding-top: $spacing-stack-xl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .success-title {
+    color: $color-base-whitish;
+    font-size: $font-size-sm;
+    margin: $spacing-stack-xxs 0 $spacing-inline-lg 0;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
@@ -8,14 +8,12 @@ import './styles.scss';
 
 type Props = {
   isBottomPage: boolean;
+  buttonText?: string;
+  buttonVariant?: 'contained' | 'outlined' | 'text';
 };
 
-const Services = ({ isBottomPage }: Props) => {
+const Summary = ({ isBottomPage, buttonText, buttonVariant }: Props) => {
   const [expanded, setExpanded] = useState(false);
-
-  useEffect(() => {
-    //setExpanded(isBottomPage);
-  }, [isBottomPage]);
 
   return (
     <>
@@ -60,10 +58,26 @@ const Services = ({ isBottomPage }: Props) => {
             <p>Horário</p>
             <p>-</p>
           </div>
+          <hr />
+          <div className="item">
+            <p>
+              <b>Local</b>
+            </p>
+            <p>Container barbershop</p>
+          </div>
+          <div className="item">
+            <p>
+              <b>Endereço</b>
+            </p>
+            <p className="align-right">
+              R. Clóvis Beviláqua, 378 - Harmonia, Canoas - RS, 92320-620
+            </p>
+          </div>
 
+          <hr />
           <div className="action">
-            <Button color="primary" variant="outlined" fullWidth>
-              Escolher horário
+            <Button color="primary" variant={buttonVariant} fullWidth>
+              {buttonText}
             </Button>
           </div>
         </div>
@@ -71,4 +85,10 @@ const Services = ({ isBottomPage }: Props) => {
     </>
   );
 };
-export default Services;
+
+Summary.defaultProps = {
+  buttonText: 'Escolher horário',
+  buttonVariant: 'outlined',
+};
+
+export default Summary;

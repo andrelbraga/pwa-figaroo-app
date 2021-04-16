@@ -4,6 +4,7 @@ export { default as RegisterName } from './Register/Name';
 export { default as RegisterEmail } from './Register/Email';
 export { default as RegisterPhone } from './Register/Phone';
 export { default as RegisterPassword } from './Register/Password';
-export { default as Home } from './Home';
+export { default as BarberServices } from './BarberServices';
 export { default as Schedule } from './Schedule';
+export { default as ScheduleSuccess } from './ScheduleSuccess';
 export { default as NotFound } from './NotFound';

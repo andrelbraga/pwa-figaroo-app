@@ -5,7 +5,7 @@ import React, { ReactElement, useState, useEffect } from 'react';
 import { Header, Services, Summary } from '@/containers';
 // import Tab from '@material-ui/core/Tab';
 
-const Home: React.FC = (): ReactElement => {
+const BarberServices: React.FC = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
   const [isBottomPage, setIsBottomPage] = useState(false);
   // const [tab, setTab] = React.useState(0);
@@ -114,4 +114,4 @@ const Home: React.FC = (): ReactElement => {
     </div>
   );
 };
-export default Home;
+export default BarberServices;

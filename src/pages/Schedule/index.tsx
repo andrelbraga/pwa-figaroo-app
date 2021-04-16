@@ -30,7 +30,11 @@ const Schedule: React.FC = (): ReactElement => {
     <div>
       <HeaderSummary user={mockUser} />
       <ScheduleAvailabity />
-      {/* <Summary isBottomPage={isBottomPage} /> */}
+      <Summary
+        isBottomPage={isBottomPage}
+        buttonText="Confirmar agendamento"
+        buttonVariant="contained"
+      />
     </div>
   );
 };
