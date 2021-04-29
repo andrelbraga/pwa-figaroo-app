@@ -1,0 +1,44 @@
+.home {
+  background: $color-gradient-primary;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-inline-xxl 0;
+
+    img {
+      margin-right: $spacing-inline-xxs;
+    }
+
+    .beta-badge {
+      background: $color-brand-primary-darkest;
+      color: $color-base-whitish;
+      font-size: $font-size-xxxs;
+      font-weight: $font-weight-semibold;
+      margin: 0;
+      padding: $spacing-squish-quarck;
+      border-radius: 38px;
+    }
+  }
+
+  .MuiTabs-root {
+    padding: 0 $spacing-inline-xxxl;
+    border-bottom: 1px solid $color-base-soft;
+  }
+
+  .home-tab-panel {
+    background: $color-base-whitish;
+    padding: $spacing-stack-xxs;
+    flex: 1;
+
+    h1 {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-xxs;
+      margin-bottom: $spacing-inline-xxs;
+    }
+  }
+}

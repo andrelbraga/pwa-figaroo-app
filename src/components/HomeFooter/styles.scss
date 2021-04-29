@@ -1,0 +1,21 @@
+.home-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.12),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+  background: $color-base-whitish;
+  padding: $spacing-stack-quarck 0;
+
+  .icon-button {
+    margin-left: $spacing-inline-sm;
+
+    &.active {
+      svg {
+        path {
+          fill: $color-base-blackish;
+        }
+      }
+    }
+  }
+}

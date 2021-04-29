@@ -10,3 +10,5 @@ export { default as ServicesListItem } from './ServicesListItem';
 export { default as Calendar } from './Calendar';
 export { default as CalendarListItem } from './CalendarListItem';
 export { default as TimeBox } from './TimeBox';
+export { default as ScheduleItem } from './ScheduleItem';
+export { default as HomeFooter } from './HomeFooter';

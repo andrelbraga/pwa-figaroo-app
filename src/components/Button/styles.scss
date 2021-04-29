@@ -1,56 +1,56 @@
 .MuiButton-root {
-  font-size: $font-size-xxxs; 
+  font-size: $font-size-xxxs;
   font-weight: $font-weight-bold;
   border-radius: $border-radius-nano;
   padding: $spacing-squish-nano;
-  
+  min-height: 44px;
+
   &.MuiButton-contained {
     box-shadow: unset;
     color: $color-base-whitish;
-    
+
     &.MuiButton-containedPrimary {
       border-color: $color-brand-primary-dark;
-      
+
       &.Mui-disabled {
         color: $color-base-whitish;
         background: $color-brand-primary-dark;
         opacity: $disabled-opacity;
       }
-      
+
       &:hover {
         background-color: $color-brand-primary-soft;
       }
     }
-    
+
     &.MuiButton-containedSecondary {
       border-color: $color-brand-secondary-dark;
-      
+
       &.Mui-disabled {
         color: $color-base-whitish;
         background: $color-brand-secondary-dark;
         opacity: $disabled-opacity;
       }
-      
+
       &:hover {
         background-color: $color-brand-secondary-soft;
       }
     }
   }
-  
+
   &.MuiButton-outlined {
-    
     &.MuiButton-outlinedPrimary {
       border-color: $color-brand-primary-dark;
-      
+
       &.Mui-disabled {
         color: $color-brand-primary-dark;
         opacity: $disabled-opacity;
       }
     }
-    
+
     &.MuiButton-outlinedSecondary {
       border-color: $color-brand-secondary-dark;
-      
+
       &.Mui-disabled {
         color: $color-base-whitish;
         background: $color-brand-secondary-dark;
@@ -58,19 +58,16 @@
       }
     }
   }
-  
+
   &.MuiButton-text {
-    
     &.MuiButton-textPrimary {
-      
       &.Mui-disabled {
         color: $color-brand-primary-dark;
         opacity: $disabled-opacity;
       }
     }
-    
+
     &.MuiButton-textSecondary {
-      
       &.Mui-disabled {
         color: $color-brand-secondary-dark;
         opacity: $disabled-opacity;

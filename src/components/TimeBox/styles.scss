@@ -3,7 +3,7 @@
   border: 1px dashed $color-brand-primary-dark;
   padding: $spacing-inline-xxs;
   margin-bottom: $spacing-stack-nano;
-  background: $color-base-light;
+  background: $color-base-whitish;
 
   .MuiIconButton-root {
     padding: 0;
@@ -12,10 +12,13 @@
 
   &.is-break {
     border: 0;
+    background: $color-base-light;
+    margin: $spacing-stack-xxs 0;
   }
 
   &.to-finish {
     border-style: solid;
+    background: $color-base-lightest;
   }
 
   .infos {

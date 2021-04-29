@@ -1,0 +1,121 @@
+.schedule-item {
+  background: $color-base-white;
+  padding: $spacing-stack-xxs;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.12),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: $border-radius-nano;
+  margin-bottom: 8px;
+
+  .person {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .avatar {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .name {
+        margin: 0;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-xs;
+        margin-left: $spacing-inline-nano;
+      }
+    }
+
+    .MuiIconButton-root {
+      padding: 0;
+      color: $color-base-blackish;
+
+      .MuiSvgIcon-root {
+        height: 32px;
+        width: 32px;
+      }
+    }
+  }
+
+  .time {
+    display: flex;
+    justify-content: space-between;
+    margin: $spacing-stack-nano 0;
+    p {
+      margin: 0;
+      font-size: $font-size-xxxs;
+    }
+  }
+
+  .schedule-services {
+    border-radius: $border-radius-nano $border-radius-nano 0px 0px;
+    display: flex;
+    margin-bottom: $spacing-stack-nano;
+
+    .border {
+      width: 4px;
+      background-color: $color-brand-primary-dark;
+      border-radius: 22px;
+      margin-right: $spacing-inline-nano;
+    }
+
+    .summary-services-list {
+      width: 100%;
+
+      .summary-services-list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: $spacing-stack-nano 0;
+
+        p {
+          margin: 0;
+        }
+
+        .service-name {
+          b {
+            font-weight: $font-weight-semibold;
+          }
+          font-size: $font-size-xxs;
+        }
+
+        .time {
+          color: $color-base-dark;
+          font-size: $font-size-xxxs;
+        }
+      }
+    }
+  }
+
+  .status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin: 0;
+      font-size: $font-size-xxxs;
+    }
+
+    .badge {
+      border-radius: $border-radius-nano;
+      display: flex;
+      padding: $spacing-stack-quarck;
+      justify-content: space-between;
+      align-items: center;
+
+      &.success {
+        background: $color-alert-primary-light;
+
+        p {
+          font-size: $font-size-xxxs;
+          font-weight: $font-weight-semibold;
+          color: $color-base-whitish;
+          margin-left: $spacing-inline-quarck;
+        }
+      }
+    }
+
+    .MuiSvgIcon-root {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}

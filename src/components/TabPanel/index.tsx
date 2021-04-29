@@ -4,6 +4,7 @@ type TabPanelProps = {
   children: React.ReactNode;
   index: any;
   value: any;
+  className: string;
 };
 
 const TabPanel = ({

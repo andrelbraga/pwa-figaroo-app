@@ -8,3 +8,5 @@ export { default as BarberServices } from './BarberServices';
 export { default as Schedule } from './Schedule';
 export { default as ScheduleSuccess } from './ScheduleSuccess';
 export { default as NotFound } from './NotFound';
+export { default as Home } from './Home';
+export { default as Profile } from './Profile';
