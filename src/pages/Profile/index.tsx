@@ -1,10 +1,19 @@
 import React, { ReactElement } from 'react';
 import { Button } from '@/components';
+import { useHistory } from 'react-router-dom';
 import avatarProfile from '@/assets/avatars/avatarProfile.png';
 
 import './styles.scss';
 
 const Profile: React.FC = (): ReactElement => {
+  const history = useHistory();
+
+  const editName = () => {
+    history.push({
+      pathname: '/perfil/nome',
+    });
+  };
+
   const ProfileListItem = () => {
     return (
       <div className="profile-list-item">
@@ -12,7 +21,7 @@ const Profile: React.FC = (): ReactElement => {
           <p className="label">Nome</p>
           <p>Luciano Aquino</p>
         </div>
-        <Button variant="text" color="primary">
+        <Button variant="text" color="primary" onClick={editName}>
           Editar
         </Button>
       </div>

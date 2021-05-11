@@ -1,0 +1,28 @@
+.edit-profile {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    padding-top: $spacing-stack-sm;
+    padding-left: $spacing-inline-xxs;
+    padding-right: $spacing-inline-xxs;
+    padding-bottom: $spacing-inline-lg;
+    flex: 1;
+
+    .inner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        padding-bottom: $spacing-stack-xxs;
+      }
+    }
+  }
+}
