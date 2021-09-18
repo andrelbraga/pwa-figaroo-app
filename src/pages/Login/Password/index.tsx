@@ -34,6 +34,23 @@ const Password: React.FC = (): ReactElement => {
     resolver: yupResolver(schema),
   });
 
+  // const doLogin = (): void => {
+  //   setPageLoader(true);
+  //   api
+  //     .post('employe', {
+  //       ...loginData,
+  //     })
+  //     .then(() => {
+  //       setRedirectTo('/home');
+  //     })
+  //     .catch(err => {
+  //       console.error('error', err);
+  //     })
+  //     .finally(() => {
+  //       setPageLoader(false);
+  //     });
+  // };
+
   const doLogin = () => {
     setPageLoader(true);
     setTimeout(() => {

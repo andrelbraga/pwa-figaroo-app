@@ -1,0 +1,44 @@
+.MuiInputBase-root {
+  background: $color-base-white;
+  border-top-left-radius: $border-radius-nano;
+  border-top-right-radius: $border-radius-nano;
+  height: 56px;
+  font-weight: $font-weight-semibold;
+
+  .MuiSelect-root {
+    background-color: $color-base-white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 10px;
+
+    svg {
+      color: $color-base-darkest;
+    }
+
+    .MuiInputAdornment-root {
+      margin-left: 0;
+      padding: 0 $spacing-inline-xxs;
+    }
+
+    .select-placeholder {
+      .MuiTypography-root {
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
+
+  &.MuiFilledInput-underline {
+    &:before {
+      border-color: $color-base-white;
+    }
+  }
+
+  &.MuiInput-underline:before {
+    content: unset;
+  }
+}
+
+.MuiFormLabel-root {
+  color: $color-base-darkest;
+  font-weight: $font-weight-semibold;
+}

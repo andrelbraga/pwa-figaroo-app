@@ -5,43 +5,62 @@
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  
+
   .navigation {
     width: 100%;
     height: $spacing-stack-xxxl;
-    
-    .MuiIconButton-root{
+
+    .MuiIconButton-root {
       padding: $spacing-stack-xxs;
     }
-    
+
     .MuiSvgIcon-root {
       width: $font-size-md;
       height: $font-size-md;
       fill: $color-base-blackish;
     }
   }
-  
+
   .logo {
-    margin-bottom: $spacing-stack-md;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 $spacing-stack-sm 0;
+
+    img {
+      margin-right: $spacing-inline-nano;
+    }
+
+    .beta-badge {
+      background: $color-brand-primary-darkest;
+      color: $color-base-whitish;
+      font-size: $font-size-xxxs;
+      font-weight: $font-weight-semibold;
+      margin: 0;
+      padding: $spacing-squish-quarck;
+      border-radius: 38px;
+    }
   }
-  
+
   .content {
     display: flex;
     flex: 1;
-    
+    width: 100%;
+
     .login {
       display: flex;
+      width: 100%;
       flex-flow: column wrap;
       justify-content: space-between;
       padding-left: $spacing-inline-xxs;
       padding-right: $spacing-inline-xxs;
       padding-bottom: $spacing-inline-lg;
-      
+
       .inner {
         width: 100%;
         display: flex;
         flex-direction: column;
-        
+
         .title {
           font-size: $font-size-sm;
           font-weight: $font-weight-semibold;
@@ -49,6 +68,5 @@
         }
       }
     }
-    
   }
 }

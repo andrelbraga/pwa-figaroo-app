@@ -4,10 +4,13 @@ import { updateObject } from '@/store/updateObject';
 const INITIAL_STATE = {
   username: '',
   password: '',
+  document: '',
   name: '',
-  surname: '',
+  surName: '',
+  lastName: '',
   email: '',
   phone: '',
+  skills: [],
 };
 
 const setLoginData = (state = INITIAL_STATE, action: any) => {

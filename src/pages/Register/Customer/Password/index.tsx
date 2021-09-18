@@ -9,6 +9,7 @@ import * as Actions from '@/store/actions';
 import { loginSelector } from '@/store/selectors/login';
 
 import { Button, InputPassword, Loader } from '@/components';
+import api from '@/services/api';
 
 const Password = () => {
   const history = useHistory();
@@ -40,19 +41,30 @@ const Password = () => {
 
   const doRegister = (): void => {
     setPageLoader(true);
-    setTimeout(() => {
-      setPageLoader(false);
-      history.push({
-        pathname: '/home',
+    api
+      .post('customer', {
+        ...loginData,
+      })
+      .then(() => {
+        history.push({
+          pathname: '/home',
+        });
+      })
+      .catch(err => {
+        console.error('error', err);
+      })
+      .finally(() => {
+        setPageLoader(false);
       });
-    }, 2000);
   };
 
   useEffect((): any => {
-    if (!loginData.email || !loginData.phone) {
+    console.log('loginData', loginData);
+
+    if (!loginData.document) {
       setRedirectTo('/login');
     }
-  }, [loginData.email, loginData.phone]);
+  }, [loginData.document]);
 
   if (redirectTo) {
     return <Redirect to={redirectTo} />;

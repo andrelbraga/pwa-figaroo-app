@@ -5,4 +5,10 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: $color-base-blackish;
   background-color: $color-base-whitish;
+
+  .MuiCheckbox-root {
+    svg {
+      fill: $color-brand-primary-dark;
+    }
+  }
 }

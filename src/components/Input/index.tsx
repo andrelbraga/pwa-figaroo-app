@@ -9,15 +9,17 @@ type TInputProps = {
 
 type Props = {
   variant?: 'filled' | 'standard' | 'outlined';
-  type?: 'text' | 'password' | 'email';
+  type?: 'text' | 'password' | 'email' | 'date';
   label?: string;
   name?: string;
+  maxLength?: number;
   error?: boolean;
   helperText?: string;
   mask?: (text: string) => string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   InputProps?: TInputProps;
+  InputLabelProps?: any;
   inputRef?: any;
   disabled?: boolean;
   autoCapitalize?: string;
@@ -33,6 +35,7 @@ export default function Input({
   isLoading = false,
   onChange = () => null,
   InputProps = {},
+  maxLength = 255,
   ...props
 }: Props) {
   const renderLoadingAdornment = () => {
@@ -62,6 +65,7 @@ export default function Input({
           : InputProps?.endAdornment,
         onChange: inputChanged,
       }}
+      inputProps={{ maxLength }}
       {...props}
     />
   );
@@ -77,9 +81,11 @@ Input.defaultProps = {
   onChange: null,
   placeholder: '',
   InputProps: {},
+  InputLabelProps: {},
   mask: (text: string) => text,
   inputRef: '',
   disabled: false,
+  maxLength: 255,
   autoCapitalize: 'none',
   readOnly: false,
   isLoading: false,

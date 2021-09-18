@@ -34,7 +34,8 @@ const Username: React.FC = (): ReactElement => {
     setTimeout(() => {
       setIsLoading(false);
       history.push({
-        pathname: '/cadastro/nome',
+        // pathname: '/cadastro/cliente/nome',
+        pathname: '/login/senha',
       });
     }, 2000);
   };

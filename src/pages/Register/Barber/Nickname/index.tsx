@@ -1,79 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string } from 'yup';
 import { useForm } from 'react-hook-form';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import * as Actions from '@/store/actions';
 import { loginSelector } from '@/store/selectors/login';
-import phoneMask from '@/masks/Phone';
 
 import { Button, Input } from '@/components';
 
-const Phone = () => {
+const Nickname = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const schema = object().shape({
-    phone: string().required('Por favor informe seu telefone'),
+    surName: string().required('Por favor informe seu apelido'),
   });
 
   const loginData = useSelector(loginSelector);
 
   const { register, handleSubmit, errors, formState } = useForm({
     defaultValues: {
-      phone: loginData.phone,
+      surName: loginData.surName,
     },
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
 
-  const [redirectTo, setRedirectTo] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
   const nextStep = (): void => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      history.push({
-        pathname: '/cadastro/senha',
-      });
-    }, 2000);
+    history.push('/cadastro/barbeiro/telefone');
   };
-
-  useEffect((): any => {
-    if (!loginData.name) {
-      setRedirectTo('/login');
-    }
-  }, [loginData.name]);
-
-  if (redirectTo) {
-    return <Redirect to={redirectTo} />;
-  }
 
   return (
     <form onSubmit={handleSubmit(nextStep)} className="login">
       <div className="inner">
         <h1 className="title">
-          {loginData.name}, qual é o seu <b>telefone</b>?
+          Você tem um <b>apelido</b>, {loginData.name}?
         </h1>
         <Input
-          label="Telefone"
-          name="phone"
-          error={!!errors.phone}
-          helperText={errors?.phone?.message}
+          label="Apelido"
+          name="surName"
+          error={!!errors.surName}
+          helperText={errors?.surName?.message}
           inputRef={register}
-          mask={phoneMask}
+          autoCapitalize="words"
           onChange={e =>
             dispatch(
               Actions.setLoginData({
                 ...loginData,
-                phone: e.target.value,
+                surName: e.target.value,
               }),
             )
           }
-          isLoading={isLoading}
         />
       </div>
 
@@ -87,4 +66,4 @@ const Phone = () => {
     </form>
   );
 };
-export default Phone;
+export default Nickname;

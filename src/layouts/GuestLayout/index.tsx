@@ -30,7 +30,10 @@ const GuestLayout = ({ children }: Props) => {
           </IconButton>
         )}
       </div>
-      <img className="logo" src={Primary} alt="Logo da Fígaroo!" />
+      <div className="logo">
+        <img src={Primary} alt="Logo da Fígaroo!" />
+        <p className="beta-badge">Beta</p>
+      </div>
       <div className="content">{children}</div>
     </div>
   );

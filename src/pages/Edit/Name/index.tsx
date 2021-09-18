@@ -33,7 +33,7 @@ const Name = () => {
   const [redirectTo, setRedirectTo] = useState('');
 
   const nextStep = (): void => {
-    // console.log('vai fazer o submit');
+    console.log('vai fazer o submit');
   };
 
   useEffect((): any => {

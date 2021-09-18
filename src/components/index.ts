@@ -13,3 +13,4 @@ export { default as TimeBox } from './TimeBox';
 export { default as ScheduleItem } from './ScheduleItem';
 export { default as HomeFooter } from './HomeFooter';
 export { default as Navigator } from './Navigator';
+export { default as Multiselect } from './Multiselect';
