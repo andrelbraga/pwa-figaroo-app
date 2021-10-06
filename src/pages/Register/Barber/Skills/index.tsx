@@ -19,7 +19,7 @@ const Skills = () => {
     yearsBusiness: number()
       .required('Por favor informe os anos de experiência')
       .typeError('Por favor informe um número válido'),
-    skills: array().required('Por favor informe suas especialidades'),
+    // skills: array().required('Por favor informe suas especialidades'),
   });
 
   const loginData = useSelector(loginSelector);
@@ -111,7 +111,8 @@ const Skills = () => {
       <Button
         color="primary"
         onClick={() => nextStep()}
-        disabled={!formState.isValid || loginData.skills.length === 0}
+        // disabled={!formState.isValid || loginData.skills.length === 0}
+        disabled={!formState.isValid}
       >
         Próximo Passo
       </Button>

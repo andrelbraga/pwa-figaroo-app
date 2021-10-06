@@ -59,8 +59,6 @@ const Password = () => {
   };
 
   useEffect((): any => {
-    console.log('loginData', loginData);
-
     if (!loginData.document) {
       setRedirectTo('/login');
     }

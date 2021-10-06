@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   lastName: '',
   email: '',
   phone: '',
+  isAuthenticated: false,
   skills: [],
 };
 

@@ -9,6 +9,10 @@ import * as Actions from '@/store/actions';
 import { loginSelector } from '@/store/selectors/login';
 
 import { Button, InputPassword, Loader } from '@/components';
+import validateEmail from '@/utils/validateEmail';
+
+import api from '@/services/api';
+import { login } from '@/services/auth';
 
 import './styles.scss';
 
@@ -34,29 +38,30 @@ const Password: React.FC = (): ReactElement => {
     resolver: yupResolver(schema),
   });
 
-  // const doLogin = (): void => {
-  //   setPageLoader(true);
-  //   api
-  //     .post('employe', {
-  //       ...loginData,
-  //     })
-  //     .then(() => {
-  //       setRedirectTo('/home');
-  //     })
-  //     .catch(err => {
-  //       console.error('error', err);
-  //     })
-  //     .finally(() => {
-  //       setPageLoader(false);
-  //     });
-  // };
-
-  const doLogin = () => {
+  const doLogin = (): void => {
     setPageLoader(true);
-    setTimeout(() => {
-      setPageLoader(false);
-      setRedirectTo('/home');
-    }, 3000);
+
+    const body: any = {
+      password: loginData.password,
+    };
+
+    if (validateEmail(loginData.username)) {
+      body.email = loginData.username;
+    } else {
+      body.phone = loginData.username;
+    }
+    api
+      .post('authorization', body)
+      .then(({ data }: any) => {
+        login(data.token.access_token);
+        setRedirectTo('/home');
+      })
+      .catch(err => {
+        console.error('Login error', err);
+      })
+      .finally(() => {
+        setPageLoader(false);
+      });
   };
 
   useEffect((): any => {

@@ -2,39 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" href="<%= htmlWebpackPlugin.options.favicon %>" />
-    
+
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyBHnH68fW666TkVXQnvLXQtCAfflUnASPI",
-      authDomain: "allsul-app.firebaseapp.com",
-      databaseURL: "https://allsul-app.firebaseio.com",
-      projectId: "allsul-app",
-      storageBucket: "allsul-app.appspot.com",
-      messagingSenderId: "667687086347",
-      appId: "1:667687086347:web:26d2879772efedf9e89a0e"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: 'AIzaSyBHnH68fW666TkVXQnvLXQtCAfflUnASPI',
+        authDomain: 'allsul-app.firebaseapp.com',
+        databaseURL: 'https://allsul-app.firebaseio.com',
+        projectId: 'allsul-app',
+        storageBucket: 'allsul-app.appspot.com',
+        messagingSenderId: '667687086347',
+        appId: '1:667687086347:web:26d2879772efedf9e89a0e',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>
 
-
-
-<link rel="apple-touch-startup-image" href="assets/apple-icon-192.png">
-<link rel="apple-touch-icon" href="assets/apple-icon-192.png">
+<link rel="apple-touch-startup-image" href="assets/apple-icon-192.png" />
+<link rel="apple-touch-icon" href="assets/apple-icon-192.png" />

@@ -8,9 +8,11 @@ import { useHistory } from 'react-router-dom';
 import * as Actions from '@/store/actions';
 import { loginSelector } from '@/store/selectors/login';
 
+import api from '@/services/api';
 import { Button, Input } from '@/components';
+import validateEmail from '@/utils/validateEmail';
 
-const Username: React.FC = (): ReactElement => {
+const Username = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -29,15 +31,32 @@ const Username: React.FC = (): ReactElement => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = () => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      history.push({
-        // pathname: '/cadastro/cliente/nome',
-        pathname: '/login/senha',
+    let pathname = '/cadastro/cliente/nome';
+    const isEmail = validateEmail(loginData.username);
+    api
+      .get(
+        isEmail
+          ? `/user/email/${loginData.username}`
+          : `/user/phone/${loginData.username.replace(/\D/g, '')}`,
+      )
+      .then(({ data }: any) => {
+        if (data?.length > 0) {
+          pathname = '/login/senha';
+        }
+
+        history.push({
+          pathname,
+        });
+      })
+      .catch(err => {
+        console.error('Error checking if user exists', err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-    }, 2000);
   };
 
   return (
