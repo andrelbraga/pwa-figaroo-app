@@ -31,3 +31,6 @@ Projeto voltado ao desenvolvimento PWA
 
 ##Service Worker
 Utilização do workbox
+
+## Run project with container
+docker-compose -f docker-compose.dev.yml up

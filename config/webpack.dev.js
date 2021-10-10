@@ -61,7 +61,7 @@ module.exports = env => {
     ],
     devServer: {
       contentBase: paths.pathPublic,
-      port: 9090,
+      port: 3000,
       historyApiFallback: true,
       hot: true,
       open: true
