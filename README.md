@@ -32,6 +32,8 @@ Projeto voltado ao desenvolvimento PWA
 ##Service Worker
 Utilização do workbox
 
-## Run project with container
+## Build project with container
 
-docker-compose -f docker-compose.dev.yml up
+docker build -t pwa-figaroo-app .
+
+docker run -it -p 3000:80 example-react-app
