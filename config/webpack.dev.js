@@ -33,7 +33,7 @@ module.exports = env => {
             {
               loader: "sass-loader",
               options: {
-                additionalData: `@import "@/styles/global.scss";`,
+                prependData: `@import "@/styles/global.scss";`,
               },
             }
           ]

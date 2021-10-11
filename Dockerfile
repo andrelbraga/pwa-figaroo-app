@@ -1,47 +1,32 @@
-FROM node:14-alpine AS development
-ENV NODE_ENV development
-# Add a work directory
+# pull official base image
+FROM node:12 AS builder
+
+# set working directory
 WORKDIR /app
-# Cache and Install dependencies
-COPY package.json .
-COPY yarn.lock .
-RUN yarn install
-# Copy app files
-COPY . .
-# Expose port
-EXPOSE 3000
-# Start the app
-CMD [ "yarn", "dev" ]
 
-FROM node:14-alpine AS builder
-ENV NODE_ENV production
-# Add a work directory
-WORKDIR /app
-# Cache and Install dependencies
-COPY package.json .
-COPY yarn.lock .
-RUN yarn install
-# Copy app files
-COPY . .
 
-# Install webpack
-RUN npm install -g webpack
+# install app dependencies
+#copies package.json and package-lock.json to Docker environment
+COPY package.json ./
 
-# Install webpack-cli
-RUN npm install -g webpack-cli
+# Installs all node packages
+RUN npm install 
 
-# Build the app
-RUN yarn build
 
-# Bundle static assets with nginx
-FROM nginx:1.21.0-alpine as production
-ENV NODE_ENV production
-# Copy built assets from builder
-COPY --from=builder /app/build /usr/share/nginx/html
-# Add your nginx.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copies everything over to Docker environment
+COPY . ./
+RUN npm run build
 
-# Expose port
-EXPOSE 80
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+#Stage 2
+#######################################
+#pull the official nginx:1.19.0 base image
+FROM nginx:1.19.0
+#copies React to the container directory
+# Set working directory to nginx resources directory
+WORKDIR /usr/share/nginx/html
+# Remove default nginx static resources
+RUN rm -rf ./*
+# Copies static resources from builder stage
+COPY --from=builder /app/build .
+# Containers run nginx with global directives and daemon off
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
